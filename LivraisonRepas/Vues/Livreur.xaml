@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:Maps="using:Bing.Maps" 
     x:Class="LivraisonRepas.Vues.Livreur"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,19 +8,40 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="295*"/>
+            <ColumnDefinition Width="388*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <ListView HorizontalAlignment="Left" Height="748" Margin="10,10,0,0" VerticalAlignment="Top" Width="374" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="824,162,0,0" TextWrapping="Wrap" Text="Ici la map" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="576,161,0,0" TextWrapping="Wrap" Text="Adresse de livraison : " VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="683,161,0,0" TextWrapping="Wrap" Text="Ici Adresse" VerticalAlignment="Top" Grid.Row="1"/>
-        <ComboBox HorizontalAlignment="Left" Margin="683,179,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1">
+        <ListView HorizontalAlignment="Left" Height="640" Margin="10,118,0,0" VerticalAlignment="Top" Width="374" Grid.RowSpan="2" BorderBrush="White" BorderThickness="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" TextWrapping="Wrap" Text="{Binding Rue}" Margin="5,0,0,0" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{Binding Distance}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Maps:Map Grid.ColumnSpan="2" Margin="389,118,10,279" Grid.RowSpan="2" ZoomLevel="7"/>
+        <TextBlock HorizontalAlignment="Left" Margin="198,355,0,0" TextWrapping="Wrap" Text="Adresse de livraison : " VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="305,355,0,0" TextWrapping="Wrap" Text="Ici Adresse" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox HorizontalAlignment="Left" Margin="305,373,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="1">
             <ComboBoxItem Content="En Préparation" Height="100" Width="100"/>
             <ComboBoxItem Content="En Livraison" Height="100" Width="100"/>
             <ComboBoxItem Content="Livré" Height="100" Width="100"/>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="584,188,0,0" TextWrapping="Wrap" Text="Êtat de la livraison :" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="206,382,0,0" TextWrapping="Wrap" Text="Êtat de la livraison :" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="Parcours : " VerticalAlignment="Top" RenderTransformOrigin="0.532,0.615"/>
+        <TextBlock HorizontalAlignment="Left" Margin="550,32,0,0" TextWrapping="Wrap" Text="Etat de la livraison" VerticalAlignment="Top" FontSize="40" RenderTransformOrigin="-0.364,0.604" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="710,58,0,0" TextWrapping="Wrap" Text="User" VerticalAlignment="Top"/>
     </Grid>
 </Page>

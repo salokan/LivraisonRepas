@@ -26,5 +26,15 @@ namespace LivraisonRepas.Vues
         {
             this.InitializeComponent();
         }
+
+        private void Ajouter_Panier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Valider_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

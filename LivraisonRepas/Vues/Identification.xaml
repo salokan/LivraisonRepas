@@ -11,7 +11,7 @@
         <TextBox x:Name="Pseudo" HorizontalAlignment="Left" Margin="534,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
         <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="534,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
         <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="534,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304"/>
-        <Button Content="S'incrire" HorizontalAlignment="Left" Margin="753,290,0,0" VerticalAlignment="Top" Click="Button_Inscription"/>
+        <Button Content="S'inscrire" HorizontalAlignment="Left" Margin="753,290,0,0" VerticalAlignment="Top" Click="Button_Inscription"/>
         <TextBlock HorizontalAlignment="Left" Margin="488,192,0,0" TextWrapping="Wrap" Text="Pseudo :" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="478,228,0,0" TextWrapping="Wrap" Text="Password :" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="407,266,0,0" TextWrapping="Wrap" Text="Adresse (et code postal) :" VerticalAlignment="Top"/>

@@ -30,5 +30,10 @@ namespace LivraisonRepas.Vues
                 await msgDialog.ShowAsync();
             }
         }
+
+        private void InscriptionClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -8,17 +8,33 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ComboBox x:Name="Menu" HorizontalAlignment="Left" Margin="549,276,0,0" VerticalAlignment="Top" Width="287">
+        <ComboBox x:Name="Menu" HorizontalAlignment="Left" Margin="444,337,0,0" VerticalAlignment="Top" Width="287">
             <ComboBoxItem Content="Menu 1" Height="100" Width="100"/>
             <ComboBoxItem Content="Menu 2" Height="100" Width="100"/>
             <ComboBoxItem Content="Menu 3" Height="100" Width="100"/>
             <ComboBoxItem Content="Menu 4" Height="100" Width="100"/>
             <ComboBoxItem Content="Menu 5" Height="100" Width="100"/>
         </ComboBox>
-        <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="549,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <Button Content="Commander" HorizontalAlignment="Left" Margin="722,347,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="465,285,0,0" TextWrapping="Wrap" Text="Choix du menu :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="320,322,0,0" TextWrapping="Wrap" Text="Adresse de livraison (si différente du compte) :" VerticalAlignment="Top"/>
-
+        <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="444,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+        <Button Content="Commander" HorizontalAlignment="Left" Margin="863,723,0,0" VerticalAlignment="Top" Click="Valider_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="360,346,0,0" TextWrapping="Wrap" Text="Choix du menu :" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="215,383,0,0" TextWrapping="Wrap" Text="Adresse de livraison (si différente du compte) :" VerticalAlignment="Top"/>
+        <ListView HorizontalAlignment="Left" Height="730" Margin="982,28,0,0" VerticalAlignment="Top" Width="374" Grid.RowSpan="2" BorderThickness="1" BorderBrush="White" CanReorderItems="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" TextWrapping="Wrap" Text="{Binding Menu}" Margin="5,0,0,0" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{Binding Prix}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="733,334,0,0" VerticalAlignment="Top" Click="Ajouter_Panier_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="982,10,0,0" TextWrapping="Wrap" Text="Panier : " VerticalAlignment="Top"/>
     </Grid>
 </Page>
