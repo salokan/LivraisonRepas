@@ -1,0 +1,35 @@
+﻿using System;
+using System.ServiceModel;
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using LivraisonRepas.LivraisonRepasServiceReference;
+using LivraisonRepas.Webservices;
+
+namespace LivraisonRepas.Vues
+{
+    public sealed partial class MainPage
+    {
+        private Services _service;
+        public MainPage()
+        {
+            InitializeComponent();
+            _service = new Services();
+        }
+
+        private async void ConnexionClick(object sender, RoutedEventArgs e)
+        {
+            Utilisateurs utilisateur = await _service._utilisateurs.AuthentificationUtilisateur(Pseudo.Text, Password.Password);
+
+            if (utilisateur == null)
+            {
+                MessageDialog msgDialog = new MessageDialog("Le pseudo ou le mot de passe est incorrect", "Attention");
+                await msgDialog.ShowAsync();
+            }
+            else
+            {
+                MessageDialog msgDialog = new MessageDialog("Bravo", "Félicitation");
+                await msgDialog.ShowAsync();
+            }
+        }
+    }
+}

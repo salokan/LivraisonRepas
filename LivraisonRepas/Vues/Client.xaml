@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="LivraisonRepas.Vues.Client"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LivraisonRepas.Vues"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ComboBox x:Name="Menu" HorizontalAlignment="Left" Margin="549,276,0,0" VerticalAlignment="Top" Width="287">
+            <ComboBoxItem Content="Menu 1" Height="100" Width="100"/>
+            <ComboBoxItem Content="Menu 2" Height="100" Width="100"/>
+            <ComboBoxItem Content="Menu 3" Height="100" Width="100"/>
+            <ComboBoxItem Content="Menu 4" Height="100" Width="100"/>
+            <ComboBoxItem Content="Menu 5" Height="100" Width="100"/>
+        </ComboBox>
+        <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="549,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
+        <Button Content="Commander" HorizontalAlignment="Left" Margin="722,347,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="465,285,0,0" TextWrapping="Wrap" Text="Choix du menu :" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="320,322,0,0" TextWrapping="Wrap" Text="Adresse de livraison (si différente du compte) :" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

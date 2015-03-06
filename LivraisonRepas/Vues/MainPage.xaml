@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="LivraisonRepas.Vues.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBox x:Name="Pseudo" HorizontalAlignment="Left" Margin="546,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273"/>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="546,394,0,0" VerticalAlignment="Top" Width="273"/>
+        <Button Content="Se connecter" HorizontalAlignment="Left" Margin="563,460,0,0" VerticalAlignment="Top" Click="ConnexionClick"/>
+        <Button Content="S'inscrire" HorizontalAlignment="Left" Margin="682,460,0,0" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Page>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LivraisonRepasService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILivraisonRepasService_GetUtilisateurs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateurs" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetUtilisateurs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateursResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetUtilisateur_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateur" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetUtilisateur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUtilisateurResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_AddUtilisateurs_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUtilisateurs" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_AddUtilisateurs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUtilisateursResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_DeleteUtilisateurs_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUtilisateurs" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_DeleteUtilisateurs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUtilisateursResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_UpdateUtilisateurs_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUtilisateurs" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_UpdateUtilisateurs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUtilisateursResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_AuthentificationUtilisateur_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificationUtilisateur" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_AuthentificationUtilisateur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificationUtilisateurResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetCommandes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommandes" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetCommandes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommandesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetCommande_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommande" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_GetCommande_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommandeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_AddCommandes_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommandes" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_AddCommandes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommandesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_DeleteCommandes_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCommandes" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_DeleteCommandes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCommandesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_UpdateCommandes_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCommandes" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_UpdateCommandes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCommandesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILivraisonRepasService">
+    <wsdl:operation name="GetUtilisateurs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetUtilisateurs" message="tns:ILivraisonRepasService_GetUtilisateurs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetUtilisateursResponse" message="tns:ILivraisonRepasService_GetUtilisateurs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilisateur">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetUtilisateur" message="tns:ILivraisonRepasService_GetUtilisateur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetUtilisateurResponse" message="tns:ILivraisonRepasService_GetUtilisateur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUtilisateurs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/AddUtilisateurs" message="tns:ILivraisonRepasService_AddUtilisateurs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/AddUtilisateursResponse" message="tns:ILivraisonRepasService_AddUtilisateurs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUtilisateurs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/DeleteUtilisateurs" message="tns:ILivraisonRepasService_DeleteUtilisateurs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/DeleteUtilisateursResponse" message="tns:ILivraisonRepasService_DeleteUtilisateurs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUtilisateurs">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/UpdateUtilisateurs" message="tns:ILivraisonRepasService_UpdateUtilisateurs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/UpdateUtilisateursResponse" message="tns:ILivraisonRepasService_UpdateUtilisateurs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthentificationUtilisateur">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateur" message="tns:ILivraisonRepasService_AuthentificationUtilisateur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateurResponse" message="tns:ILivraisonRepasService_AuthentificationUtilisateur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetCommandes" message="tns:ILivraisonRepasService_GetCommandes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetCommandesResponse" message="tns:ILivraisonRepasService_GetCommandes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommande">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetCommande" message="tns:ILivraisonRepasService_GetCommande_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetCommandeResponse" message="tns:ILivraisonRepasService_GetCommande_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCommandes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/AddCommandes" message="tns:ILivraisonRepasService_AddCommandes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/AddCommandesResponse" message="tns:ILivraisonRepasService_AddCommandes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCommandes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/DeleteCommandes" message="tns:ILivraisonRepasService_DeleteCommandes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/DeleteCommandesResponse" message="tns:ILivraisonRepasService_DeleteCommandes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCommandes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/UpdateCommandes" message="tns:ILivraisonRepasService_UpdateCommandes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/UpdateCommandesResponse" message="tns:ILivraisonRepasService_UpdateCommandes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILivraisonRepasService" type="tns:ILivraisonRepasService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUtilisateurs">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/GetUtilisateurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUtilisateur">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/GetUtilisateur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUtilisateurs">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/AddUtilisateurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUtilisateurs">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/DeleteUtilisateurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUtilisateurs">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/UpdateUtilisateurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthentificationUtilisateur">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommandes">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/GetCommandes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommande">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/GetCommande" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCommandes">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/AddCommandes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCommandes">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/DeleteCommandes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCommandes">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/UpdateCommandes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LivraisonRepasService">
+    <wsdl:port name="BasicHttpBinding_ILivraisonRepasService" binding="tns:BasicHttpBinding_ILivraisonRepasService">
+      <soap:address location="http://localhost:45719/LivraisonRepasService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
