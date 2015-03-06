@@ -32,8 +32,6 @@ namespace LivraisonRepasService.CAD
             }
 
             return utilisateurs;
-            //return new Utilisateurs{Id = 1,Pseudo = "a",Password = "a",Adresse = "a",Type = "a"}
-            //;
         }
 
         public void AddUtilisateurs(Utilisateurs u)
