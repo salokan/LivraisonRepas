@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ServiceModel;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using LivraisonRepas.LivraisonRepasServiceReference;
