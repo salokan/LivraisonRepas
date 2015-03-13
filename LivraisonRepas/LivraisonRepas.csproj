@@ -109,6 +109,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Service References\LivraisonRepasCommandesServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LivraisonRepasUtilisateursServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Client.xaml.cs">
       <DependentUpon>Client.xaml</DependentUpon>
     </Compile>
@@ -122,11 +132,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\LivraisonRepasServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Webservices\CommandesCad.cs" />
     <Compile Include="Webservices\Services.cs" />
     <Compile Include="Webservices\UtilisateursCad.cs" />
@@ -137,17 +142,36 @@
     </AppxManifest>
     <None Include="LivraisonRepas_TemporaryKey.pfx" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite.datasource">
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\LivraisonRepas.LivraisonRepasCommandesServiceReference.CommandesComposite.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService.wsdl" />
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService.xsd">
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\LivraisonRepasCommandesService.wsdl" />
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\LivraisonRepasCommandesService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService1.xsd">
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\LivraisonRepasCommandesService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\LivraisonRepasCommandesService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\LivraisonRepasCommandesService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\LivraisonRepas.LivraisonRepasUtilisateursServiceReference.UtilisateursComposite.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\LivraisonRepasAuthentificationService.wsdl" />
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\LivraisonRepasUtilisateursService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\LivraisonRepasUtilisateursService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\LivraisonRepasUtilisateursService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\LivraisonRepasUtilisateursService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -156,18 +180,18 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\LivraisonRepasServiceReference\Reference.svcmap">
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\LivraisonRepasServiceReference\configuration.svcinfo" />
-    <None Include="Service References\LivraisonRepasServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\configuration.svcinfo" />
+    <None Include="Service References\LivraisonRepasCommandesServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\configuration.svcinfo" />
+    <None Include="Service References\LivraisonRepasUtilisateursServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -192,7 +216,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\LivraisonRepasServiceReference\" />
+    <WCFMetadataStorage Include="Service References\LivraisonRepasCommandesServiceReference\" />
+    <WCFMetadataStorage Include="Service References\LivraisonRepasUtilisateursServiceReference\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

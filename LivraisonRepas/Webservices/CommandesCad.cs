@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using LivraisonRepas.LivraisonRepasServiceReference;
+using LivraisonRepas.LivraisonRepasCommandesServiceReference;
 
 namespace LivraisonRepas.Webservices
 {
     public class CommandesCad
     {
-        LivraisonRepasServiceClient _client;
+        LivraisonRepasCommandesServiceClient _client;
 
-        public CommandesCad(LivraisonRepasServiceClient client)
+        public CommandesCad(LivraisonRepasCommandesServiceClient client)
         {
             _client = client;
         }
