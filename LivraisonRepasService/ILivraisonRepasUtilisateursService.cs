@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
 using LivraisonRepasService.Composite;
 
 namespace LivraisonRepasService
 {
     [ServiceContract]
-    public interface ILivraisonRepasService
+    public interface ILivraisonRepasUtilisateursService
     {
-        #region Utilisateurs
         [OperationContract]
         List<UtilisateursComposite> GetUtilisateurs();
         [OperationContract]
@@ -27,19 +25,5 @@ namespace LivraisonRepasService
         UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password);
         [OperationContract]
         bool ExistePseudo(string pseudo);
-        #endregion
-
-        #region Commandes
-        [OperationContract]
-        List<CommandesComposite> GetCommandes();
-        [OperationContract]
-        CommandesComposite GetCommande(int id);
-        [OperationContract]
-        void AddCommandes(Commandes c);
-        [OperationContract]
-        void DeleteCommandes(int id);
-        [OperationContract]
-        void UpdateCommandes(Commandes c);
-        #endregion
     }
 }

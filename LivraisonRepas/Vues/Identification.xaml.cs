@@ -2,7 +2,7 @@
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 
-using LivraisonRepas.LivraisonRepasServiceReference;
+using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
 using LivraisonRepas.Webservices;
 
 namespace LivraisonRepas.Vues
@@ -32,7 +32,7 @@ namespace LivraisonRepas.Vues
                 }
                 else
                 {
-                    _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text });
+                    _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text, Type = "livreur"});
                     Frame.GoBack();
                 }
             } 

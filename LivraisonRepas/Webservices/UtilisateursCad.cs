@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using LivraisonRepas.LivraisonRepasServiceReference;
+using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
+using Utilisateurs = LivraisonRepas.LivraisonRepasUtilisateursServiceReference.Utilisateurs;
+using UtilisateursComposite = LivraisonRepas.LivraisonRepasUtilisateursServiceReference.UtilisateursComposite;
 
 namespace LivraisonRepas.Webservices
 {
     public class UtilisateursCad
     {
-        LivraisonRepasServiceClient _client;
+        LivraisonRepasUtilisateursServiceClient _client;
 
-        public UtilisateursCad(LivraisonRepasServiceClient client)
+        public UtilisateursCad(LivraisonRepasUtilisateursServiceClient client)
         {
             _client = client;
         }

@@ -4,12 +4,10 @@ using LivraisonRepasService.Composite;
 
 namespace LivraisonRepasService
 {
-    public class LivraisonRepasService : ILivraisonRepasService
+    public class LivraisonRepasAuthentificationService : ILivraisonRepasUtilisateursService
     {
         private readonly UtilisateursCad _utilisateurs = new UtilisateursCad();
-        private readonly CommandesCad _commandes = new CommandesCad();
 
-        #region Utilisateurs
         public List<UtilisateursComposite> GetUtilisateurs()
         {
             return _utilisateurs.GetUtilisateurs();
@@ -35,7 +33,6 @@ namespace LivraisonRepasService
             _utilisateurs.UpdateUtilisateurs(u);
         }
 
-
         public UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password)
         {
             return _utilisateurs.AuthentificationUtilisateur(pseudo, password);
@@ -45,33 +42,5 @@ namespace LivraisonRepasService
         {
             return _utilisateurs.ExistePseudo(pseudo);
         }
-        #endregion
-
-        #region Commandes
-        public List<CommandesComposite> GetCommandes()
-        {
-            return _commandes.GetCommandes();
-        }
-
-        public CommandesComposite GetCommande(int id)
-        {
-            return _commandes.GetCommandes(id);
-        }
-
-        public void AddCommandes(Commandes c)
-        {
-            _commandes.AddCommandes(c);
-        }
-
-        public void DeleteCommandes(int id)
-        {
-            _commandes.DeleteCommandes(id);
-        }
-
-        public void UpdateCommandes(Commandes c)
-        {
-            _commandes.UpdateCommandes(c);
-        }
-        #endregion
     }
 }
