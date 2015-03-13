@@ -17,6 +17,96 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UtilisateursComposite", Namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite")]
+    public partial class UtilisateursComposite : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string AdresseValueField;
+        
+        private int IdUtilisateursValueField;
+        
+        private string PasswordValueField;
+        
+        private string PseudoValueField;
+        
+        private string TypeValueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AdresseValue {
+            get {
+                return this.AdresseValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AdresseValueField, value) != true)) {
+                    this.AdresseValueField = value;
+                    this.RaisePropertyChanged("AdresseValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUtilisateursValue {
+            get {
+                return this.IdUtilisateursValueField;
+            }
+            set {
+                if ((this.IdUtilisateursValueField.Equals(value) != true)) {
+                    this.IdUtilisateursValueField = value;
+                    this.RaisePropertyChanged("IdUtilisateursValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PasswordValue {
+            get {
+                return this.PasswordValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordValueField, value) != true)) {
+                    this.PasswordValueField = value;
+                    this.RaisePropertyChanged("PasswordValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PseudoValue {
+            get {
+                return this.PseudoValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PseudoValueField, value) != true)) {
+                    this.PseudoValueField = value;
+                    this.RaisePropertyChanged("PseudoValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TypeValue {
+            get {
+                return this.TypeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeValueField, value) != true)) {
+                    this.TypeValueField = value;
+                    this.RaisePropertyChanged("TypeValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Utilisateurs", Namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService")]
     public partial class Utilisateurs : object, System.ComponentModel.INotifyPropertyChanged {
         
@@ -255,15 +345,105 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CommandesComposite", Namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite")]
+    public partial class CommandesComposite : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string ContenuValueField;
+        
+        private string EtatValueField;
+        
+        private int IdClientsValueField;
+        
+        private int IdCommandesValueField;
+        
+        private int IdLivreursValueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContenuValue {
+            get {
+                return this.ContenuValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContenuValueField, value) != true)) {
+                    this.ContenuValueField = value;
+                    this.RaisePropertyChanged("ContenuValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EtatValue {
+            get {
+                return this.EtatValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EtatValueField, value) != true)) {
+                    this.EtatValueField = value;
+                    this.RaisePropertyChanged("EtatValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdClientsValue {
+            get {
+                return this.IdClientsValueField;
+            }
+            set {
+                if ((this.IdClientsValueField.Equals(value) != true)) {
+                    this.IdClientsValueField = value;
+                    this.RaisePropertyChanged("IdClientsValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCommandesValue {
+            get {
+                return this.IdCommandesValueField;
+            }
+            set {
+                if ((this.IdCommandesValueField.Equals(value) != true)) {
+                    this.IdCommandesValueField = value;
+                    this.RaisePropertyChanged("IdCommandesValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdLivreursValue {
+            get {
+                return this.IdLivreursValueField;
+            }
+            set {
+                if ((this.IdLivreursValueField.Equals(value) != true)) {
+                    this.IdLivreursValueField = value;
+                    this.RaisePropertyChanged("IdLivreursValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LivraisonRepasServiceReference.ILivraisonRepasService")]
     public interface ILivraisonRepasService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/GetUtilisateurs", ReplyAction="http://tempuri.org/ILivraisonRepasService/GetUtilisateursResponse")]
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs>> GetUtilisateursAsync();
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite>> GetUtilisateursAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/GetUtilisateur", ReplyAction="http://tempuri.org/ILivraisonRepasService/GetUtilisateurResponse")]
-        System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs> GetUtilisateurAsync(int id);
+        System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite> GetUtilisateurAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/AddUtilisateurs", ReplyAction="http://tempuri.org/ILivraisonRepasService/AddUtilisateursResponse")]
         System.Threading.Tasks.Task AddUtilisateursAsync(LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs u);
@@ -275,13 +455,13 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
         System.Threading.Tasks.Task UpdateUtilisateursAsync(LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs u);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateur", ReplyAction="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateurResponse")]
-        System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs> AuthentificationUtilisateurAsync(string pseudo, string password);
+        System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite> AuthentificationUtilisateurAsync(string pseudo, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/GetCommandes", ReplyAction="http://tempuri.org/ILivraisonRepasService/GetCommandesResponse")]
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.Commandes>> GetCommandesAsync();
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite>> GetCommandesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/GetCommande", ReplyAction="http://tempuri.org/ILivraisonRepasService/GetCommandeResponse")]
-        System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.Commandes> GetCommandeAsync(int id);
+        System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite> GetCommandeAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/AddCommandes", ReplyAction="http://tempuri.org/ILivraisonRepasService/AddCommandesResponse")]
         System.Threading.Tasks.Task AddCommandesAsync(LivraisonRepas.LivraisonRepasServiceReference.Commandes c);
@@ -336,11 +516,11 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs>> GetUtilisateursAsync() {
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite>> GetUtilisateursAsync() {
             return base.Channel.GetUtilisateursAsync();
         }
         
-        public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs> GetUtilisateurAsync(int id) {
+        public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite> GetUtilisateurAsync(int id) {
             return base.Channel.GetUtilisateurAsync(id);
         }
         
@@ -356,15 +536,15 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
             return base.Channel.UpdateUtilisateursAsync(u);
         }
         
-        public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs> AuthentificationUtilisateurAsync(string pseudo, string password) {
+        public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite> AuthentificationUtilisateurAsync(string pseudo, string password) {
             return base.Channel.AuthentificationUtilisateurAsync(pseudo, password);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.Commandes>> GetCommandesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite>> GetCommandesAsync() {
             return base.Channel.GetCommandesAsync();
         }
         
-        public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.Commandes> GetCommandeAsync(int id) {
+        public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite> GetCommandeAsync(int id) {
             return base.Channel.GetCommandeAsync(id);
         }
         

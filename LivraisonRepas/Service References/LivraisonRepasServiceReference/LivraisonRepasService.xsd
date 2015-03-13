@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService" />
+  <xs:import schemaLocation="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite" />
+  <xs:import schemaLocation="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/LivraisonRepasService" />
   <xs:element name="GetUtilisateurs">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +10,7 @@
   <xs:element name="GetUtilisateursResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LivraisonRepasService" minOccurs="0" name="GetUtilisateursResult" nillable="true" type="q1:ArrayOfUtilisateurs" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite" minOccurs="0" name="GetUtilisateursResult" nillable="true" type="q1:ArrayOfUtilisateursComposite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -23,7 +24,7 @@
   <xs:element name="GetUtilisateurResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LivraisonRepasService" minOccurs="0" name="GetUtilisateurResult" nillable="true" type="q2:Utilisateurs" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite" minOccurs="0" name="GetUtilisateurResult" nillable="true" type="q2:UtilisateursComposite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -74,7 +75,7 @@
   <xs:element name="AuthentificationUtilisateurResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LivraisonRepasService" minOccurs="0" name="AuthentificationUtilisateurResult" nillable="true" type="q5:Utilisateurs" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite" minOccurs="0" name="AuthentificationUtilisateurResult" nillable="true" type="q5:UtilisateursComposite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,7 +87,7 @@
   <xs:element name="GetCommandesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LivraisonRepasService" minOccurs="0" name="GetCommandesResult" nillable="true" type="q6:ArrayOfCommandes" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite" minOccurs="0" name="GetCommandesResult" nillable="true" type="q6:ArrayOfCommandesComposite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -100,7 +101,7 @@
   <xs:element name="GetCommandeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LivraisonRepasService" minOccurs="0" name="GetCommandeResult" nillable="true" type="q7:Commandes" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LivraisonRepasService.Composite" minOccurs="0" name="GetCommandeResult" nillable="true" type="q7:CommandesComposite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

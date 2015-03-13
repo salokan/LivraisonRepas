@@ -76,6 +76,8 @@
     <Compile Include="Commandes.cs">
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Composite\CommandesComposite.cs" />
+    <Compile Include="Composite\UtilisateursComposite.cs" />
     <Compile Include="LivraisonRepasModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using LivraisonRepas.LivraisonRepasServiceReference;
 
@@ -13,14 +14,41 @@ namespace LivraisonRepas.Webservices
             _client = client;
         }
 
-        public async Task<ObservableCollection<Commandes>> GetCommandes()
+        public async Task<List<Commandes>> GetCommandes()
         {
-            return await _client.GetCommandesAsync();
+            ObservableCollection<CommandesComposite> commandesList;
+            List<Commandes> commandes = new List<Commandes>();
+
+            commandesList = await _client.GetCommandesAsync();
+
+            foreach (CommandesComposite c in commandesList)
+            {
+                Commandes commande = new Commandes();
+                commande.Id = c.IdCommandesValue;
+                commande.Id_Client = c.IdClientsValue;
+                commande.Id_Livreur = c.IdLivreursValue;
+                commande.Contenu = c.ContenuValue;
+                commande.Etat = c.EtatValue;
+
+                commandes.Add(commande);
+            }
+
+            return commandes;
         }
 
         public async Task<Commandes> GetCommandes(int id)
         {
-            return await _client.GetCommandeAsync(id);
+            Commandes commande = new Commandes();
+
+            CommandesComposite commandesComposite = await _client.GetCommandeAsync(id);
+
+            commande.Id = commandesComposite.IdCommandesValue;
+            commande.Id_Client = commandesComposite.IdClientsValue;
+            commande.Id_Livreur = commandesComposite.IdLivreursValue;
+            commande.Contenu = commandesComposite.ContenuValue;
+            commande.Etat = commandesComposite.EtatValue;
+
+            return commande;
         }
 
         public async void AddCommandes(Commandes u)

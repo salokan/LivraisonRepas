@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using LivraisonRepas.LivraisonRepasServiceReference;
 
@@ -13,14 +14,41 @@ namespace LivraisonRepas.Webservices
             _client = client;
         }
 
-        public async Task<ObservableCollection<Utilisateurs>> GetUtilisateurs()
+        public async Task<List<Utilisateurs>> GetUtilisateurs()
         {
-            return await _client.GetUtilisateursAsync();
+            ObservableCollection<UtilisateursComposite> utilisateursList;
+            List<Utilisateurs> utilisateurs = new List<Utilisateurs>();
+
+            utilisateursList = await _client.GetUtilisateursAsync();
+
+            foreach (UtilisateursComposite u in utilisateursList)
+            {
+                Utilisateurs utilisateur = new Utilisateurs();
+                utilisateur.Id = u.IdUtilisateursValue;
+                utilisateur.Pseudo = u.PseudoValue;
+                utilisateur.Password = u.PasswordValue;
+                utilisateur.Adresse = u.AdresseValue;
+                utilisateur.Type = u.TypeValue;
+
+                utilisateurs.Add(utilisateur);
+            }
+
+            return utilisateurs;
         }
 
         public async Task<Utilisateurs> GetUtilisateur(int id)
         {
-            return await _client.GetUtilisateurAsync(id);
+            Utilisateurs utilisateurs = new Utilisateurs();
+
+            UtilisateursComposite utilisateursComposite = await _client.GetUtilisateurAsync(id);
+
+            utilisateurs.Id = utilisateursComposite.IdUtilisateursValue;
+            utilisateurs.Pseudo = utilisateursComposite.PseudoValue;
+            utilisateurs.Password = utilisateursComposite.PasswordValue;
+            utilisateurs.Adresse = utilisateursComposite.AdresseValue;
+            utilisateurs.Type = utilisateursComposite.TypeValue;
+
+            return utilisateurs;
         }
 
         public async void AddUtilisateurs(Utilisateurs u)
@@ -40,8 +68,17 @@ namespace LivraisonRepas.Webservices
 
         public async Task<Utilisateurs> AuthentificationUtilisateur(string pseudo, string password)
         {
-            Utilisateurs u = await _client.GetUtilisateurAsync(1);
-            return u;
+            Utilisateurs utilisateurs = new Utilisateurs();
+
+            UtilisateursComposite utilisateursComposite = await _client.AuthentificationUtilisateurAsync(pseudo,password);
+
+            utilisateurs.Id = utilisateursComposite.IdUtilisateursValue;
+            utilisateurs.Pseudo = utilisateursComposite.PseudoValue;
+            utilisateurs.Password = utilisateursComposite.PasswordValue;
+            utilisateurs.Adresse = utilisateursComposite.AdresseValue;
+            utilisateurs.Type = utilisateursComposite.TypeValue;
+
+            return utilisateurs;
         }
     }
 }

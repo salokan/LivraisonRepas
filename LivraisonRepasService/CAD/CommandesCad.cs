@@ -1,37 +1,65 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LivraisonRepasService.Composite;
 
 namespace LivraisonRepasService.CAD
 {
     public class CommandesCad
     {
-        public List<Commandes> GetCommandes()
+        public List<CommandesComposite> GetCommandes()
         {
+            List<CommandesComposite> commandesList = new List<CommandesComposite>();
+
             List<Commandes> commandes;
             using (var bdd = new LivraisonRepasEntities())
             {
                 var requete = from c in bdd.Commandes
-                                select c;
+                              select c;
 
                 commandes = requete.ToList();
             }
-            return commandes;
+
+            if (commandes.Count > 0)
+            {
+                foreach (Commandes c in commandes)
+                {
+                    CommandesComposite composite = new CommandesComposite();
+                    composite.IdCommandesValue = c.Id;
+                    composite.IdClientsValue = c.Id_Client;
+                    composite.IdLivreursValue = c.Id_Livreur;
+                    composite.ContenuValue = c.Contenu;
+                    composite.EtatValue = c.Etat;
+                    commandesList.Add(composite);
+                }
+            }
+
+            return commandesList;
         }
 
-        public Commandes GetCommandes(int id)
+        public CommandesComposite GetCommandes(int id)
         {
-            Commandes commandes;
+            CommandesComposite compositeCommandes = new CommandesComposite();
+            Commandes commande;
 
             using (var bdd = new LivraisonRepasEntities())
             {
                 var requete = from c in bdd.Commandes
-                                where c.Id == id
-                                select c;
+                              where c.Id == id
+                              select c;
 
-                commandes = requete.FirstOrDefault();
+                commande = requete.FirstOrDefault();
             }
 
-            return commandes;
+            if (commande != null)
+            {
+                compositeCommandes.IdCommandesValue = commande.Id;
+                compositeCommandes.IdClientsValue = commande.Id_Client;
+                compositeCommandes.IdLivreursValue = commande.Id_Livreur;
+                compositeCommandes.ContenuValue = commande.Contenu;
+                compositeCommandes.EtatValue = commande.Etat;
+            }
+
+            return compositeCommandes;
         }
 
         public void AddCommandes(Commandes c)
