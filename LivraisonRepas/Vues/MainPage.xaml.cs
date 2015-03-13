@@ -28,6 +28,7 @@ namespace LivraisonRepas.Vues
             {
                 MessageDialog msgDialog = new MessageDialog("Bravo", "Félicitation");
                 await msgDialog.ShowAsync();
+                Frame.Navigate(typeof(Client), utilisateur);
             }
         }
 

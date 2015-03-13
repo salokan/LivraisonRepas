@@ -18,7 +18,7 @@ namespace LivraisonRepas.Vues
 
         private async void InscriptionClick(object sender, RoutedEventArgs e)
         {
-            if (Pseudo.Text.Equals("") || Password.Text.Equals("") || Adresse.Text.Equals(""))
+            if (Pseudo.Text.Equals("") || Password.Password.Equals("") || Adresse.Text.Equals(""))
             {
                 MessageDialog msgDialog = new MessageDialog("Aucun champ ne doit être vide", "Erreur");
                 await msgDialog.ShowAsync();
@@ -32,12 +32,12 @@ namespace LivraisonRepas.Vues
                 }
                 else
                 {
-                    _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text, Type = "livreur"});
+                    _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Password, Type = "livreur"});
                     Frame.GoBack();
                 }
             } 
         }
-        private async void BackClick(object sender, RoutedEventArgs e)
+        private void BackClick(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
         }
