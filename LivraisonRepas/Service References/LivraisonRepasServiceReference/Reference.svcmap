@@ -27,6 +27,7 @@
     <MetadataFile FileName="LivraisonRepasService.xsd" MetadataType="Schema" ID="ad6147e0-8f5d-4da9-8be7-d0bd3bf94ff0" SourceId="1" SourceUrl="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd0" />
     <MetadataFile FileName="LivraisonRepasService1.xsd" MetadataType="Schema" ID="a9c6f071-b18e-43ec-90b7-497db4a71e86" SourceId="1" SourceUrl="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd1" />
     <MetadataFile FileName="LivraisonRepasService2.xsd" MetadataType="Schema" ID="8eff0d13-848f-46bd-8f64-54c20e53e802" SourceId="1" SourceUrl="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LivraisonRepasService3.xsd" MetadataType="Schema" ID="d377fee6-09a8-47a4-92a3-52581c155cd0" SourceId="1" SourceUrl="http://localhost:45719/LivraisonRepasService.svc?xsd=xsd3" />
     <MetadataFile FileName="LivraisonRepasService.wsdl" MetadataType="Wsdl" ID="123b1683-60ca-48bc-bd2c-1bb2e337885b" SourceId="1" SourceUrl="http://localhost:45719/LivraisonRepasService.svc?wsdl" />
   </Metadata>
   <Extensions>

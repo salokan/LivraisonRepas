@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using LivraisonRepasService.CAD;
+using LivraisonRepasService.Composite;
 
 namespace LivraisonRepasService
 {
@@ -9,12 +10,12 @@ namespace LivraisonRepasService
         private readonly CommandesCad _commandes = new CommandesCad();
 
         #region Utilisateurs
-        public List<Utilisateurs> GetUtilisateurs()
+        public List<UtilisateursComposite> GetUtilisateurs()
         {
             return _utilisateurs.GetUtilisateurs();
         }
 
-        public Utilisateurs GetUtilisateur(int id)
+        public UtilisateursComposite GetUtilisateur(int id)
         {
             return _utilisateurs.GetUtilisateurs(id);
         }
@@ -35,19 +36,24 @@ namespace LivraisonRepasService
         }
 
 
-        public Utilisateurs AuthentificationUtilisateur(string pseudo, string password)
+        public UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password)
         {
             return _utilisateurs.AuthentificationUtilisateur(pseudo, password);
+        }
+
+        public bool ExistePseudo(string pseudo)
+        {
+            return _utilisateurs.ExistePseudo(pseudo);
         }
         #endregion
 
         #region Commandes
-        public List<Commandes> GetCommandes()
+        public List<CommandesComposite> GetCommandes()
         {
             return _commandes.GetCommandes();
         }
 
-        public Commandes GetCommande(int id)
+        public CommandesComposite GetCommande(int id)
         {
             return _commandes.GetCommandes(id);
         }

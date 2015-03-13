@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using LivraisonRepasService.Composite;
 
 namespace LivraisonRepasService
 {
@@ -13,25 +14,26 @@ namespace LivraisonRepasService
     {
         #region Utilisateurs
         [OperationContract]
-        List<Utilisateurs> GetUtilisateurs();
+        List<UtilisateursComposite> GetUtilisateurs();
         [OperationContract]
-        Utilisateurs GetUtilisateur(int id);
+        UtilisateursComposite GetUtilisateur(int id);
         [OperationContract]
         void AddUtilisateurs(Utilisateurs u);
         [OperationContract]
         void DeleteUtilisateurs(int id);
         [OperationContract]
         void UpdateUtilisateurs(Utilisateurs u);
-
         [OperationContract]
-        Utilisateurs AuthentificationUtilisateur(string pseudo, string password);
+        UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password);
+        [OperationContract]
+        bool ExistePseudo(string pseudo);
         #endregion
 
         #region Commandes
         [OperationContract]
-        List<Commandes> GetCommandes();
+        List<CommandesComposite> GetCommandes();
         [OperationContract]
-        Commandes GetCommande(int id);
+        CommandesComposite GetCommande(int id);
         [OperationContract]
         void AddCommandes(Commandes c);
         [OperationContract]

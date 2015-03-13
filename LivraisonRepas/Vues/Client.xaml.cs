@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,6 +23,8 @@ namespace LivraisonRepas.Vues
     /// </summary>
     public sealed partial class Client : Page
     {
+
+        private ObservableCollection<String> _listViewPanier = new ObservableCollection<String>();
         public Client()
         {
             this.InitializeComponent();
@@ -29,7 +32,9 @@ namespace LivraisonRepas.Vues
 
         private void Ajouter_Panier_Click(object sender, RoutedEventArgs e)
         {
-
+            ComboBoxItem typeItem = (ComboBoxItem)Menu.SelectedItem;
+            string selected = typeItem.Content.ToString();
+            _listViewPanier.Add(selected);
         }
 
         private void Valider_Click(object sender, RoutedEventArgs e)

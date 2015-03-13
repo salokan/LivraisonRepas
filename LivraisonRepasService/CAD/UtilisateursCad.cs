@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LivraisonRepasService.Composite;
 
 namespace LivraisonRepasService.CAD
 {
     public class UtilisateursCad
     {
-        public List<Utilisateurs> GetUtilisateurs()
+        public List<UtilisateursComposite> GetUtilisateurs()
         {
+            List<UtilisateursComposite> utilisateursList = new List<UtilisateursComposite>();
+
             List<Utilisateurs> utilisateurs;
             using (var bdd = new LivraisonRepasEntities())
             {
@@ -15,11 +18,27 @@ namespace LivraisonRepasService.CAD
 
                 utilisateurs = requete.ToList();
             }
-            return utilisateurs;
+
+            if (utilisateurs.Count > 0)
+            {
+                foreach (Utilisateurs u in utilisateurs)
+                {
+                    UtilisateursComposite composite = new UtilisateursComposite();
+                    composite.IdUtilisateursValue = u.Id;
+                    composite.PseudoValue = u.Pseudo;
+                    composite.PasswordValue = u.Password;
+                    composite.AdresseValue = u.Adresse;
+                    composite.TypeValue = u.Type;
+                    utilisateursList.Add(composite);
+                }
+            }
+
+            return utilisateursList;
         }
 
-        public Utilisateurs GetUtilisateurs(int id)
+        public UtilisateursComposite GetUtilisateurs(int id)
         {
+            UtilisateursComposite compositeUtilisateurs = new UtilisateursComposite();
             Utilisateurs utilisateurs;
 
             using (var bdd = new LivraisonRepasEntities())
@@ -31,7 +50,16 @@ namespace LivraisonRepasService.CAD
                 utilisateurs = requete.FirstOrDefault();
             }
 
-            return utilisateurs;
+            if (utilisateurs != null)
+            {
+                compositeUtilisateurs.IdUtilisateursValue = utilisateurs.Id;
+                compositeUtilisateurs.PseudoValue = utilisateurs.Pseudo;
+                compositeUtilisateurs.PasswordValue = utilisateurs.Password;
+                compositeUtilisateurs.AdresseValue = utilisateurs.Adresse;
+                compositeUtilisateurs.TypeValue = utilisateurs.Type;
+            }
+
+            return compositeUtilisateurs;
         }
 
         public void AddUtilisateurs(Utilisateurs u)
@@ -75,8 +103,9 @@ namespace LivraisonRepasService.CAD
             }
         }
 
-        public Utilisateurs AuthentificationUtilisateur(string pseudo, string password)
+        public UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password)
         {
+            UtilisateursComposite compositeUtilisateurs = new UtilisateursComposite();
             Utilisateurs utilisateurs;
 
             using (var bdd = new LivraisonRepasEntities())
@@ -88,7 +117,39 @@ namespace LivraisonRepasService.CAD
                 utilisateurs = requete.FirstOrDefault();
             }
 
-            return utilisateurs;
+            if (utilisateurs != null)
+            {
+                compositeUtilisateurs.IdUtilisateursValue = utilisateurs.Id;
+                compositeUtilisateurs.PseudoValue = utilisateurs.Pseudo;
+                compositeUtilisateurs.PasswordValue = utilisateurs.Password;
+                compositeUtilisateurs.AdresseValue = utilisateurs.Adresse;
+                compositeUtilisateurs.TypeValue = utilisateurs.Type;
+            }
+
+            return compositeUtilisateurs;
+        }
+
+        public bool ExistePseudo(string pseudo)
+        {
+            bool existe = false;
+
+            List<Utilisateurs> utilisateurs;
+            using (var bdd = new LivraisonRepasEntities())
+            {
+                var requete = from u in bdd.Utilisateurs
+                              select u;
+
+                utilisateurs = requete.ToList();
+
+
+                foreach (Utilisateurs utilisateursListe in utilisateurs)
+                {
+                    if (utilisateursListe.Pseudo.Equals(pseudo))
+                        existe = true;
+                }
+            }
+
+            return existe;
         }
     }
 }

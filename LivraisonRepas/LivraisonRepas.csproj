@@ -137,10 +137,10 @@
     </AppxManifest>
     <None Include="LivraisonRepas_TemporaryKey.pfx" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepas.LivraisonRepasServiceReference.Commandes.datasource">
+    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepas.LivraisonRepasServiceReference.Utilisateurs.datasource">
+    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService.wsdl" />
@@ -157,6 +157,9 @@
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LivraisonRepasServiceReference\LivraisonRepasService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\LivraisonRepasServiceReference\Reference.svcmap">

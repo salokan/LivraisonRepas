@@ -8,8 +8,13 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBox x:Name="Pseudo" HorizontalAlignment="Left" Margin="546,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273"/>
-        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="546,394,0,0" VerticalAlignment="Top" Width="273"/>
-        <Button Content="Se connecter" HorizontalAlignment="Left" Margin="563,460,0,0" VerticalAlignment="Top" Click="ConnexionClick"/>
-        <Button Content="S'inscrire" HorizontalAlignment="Left" Margin="682,460,0,0" VerticalAlignment="Top" Width="120" Click="InscriptionClick"/>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="546,387,0,0" VerticalAlignment="Top" Width="273"/>
+        <Button Content="Se connecter" HorizontalAlignment="Left" Margin="543,421,0,0" VerticalAlignment="Top" Click="ConnexionClick"/>
+        <Button Content="S'inscrire" HorizontalAlignment="Left" Margin="702,421,0,0" VerticalAlignment="Top" Width="120" Click="InscriptionClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="546,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.044,0.923">
+        	<Run Text="Login"/>
+        	<Run Text=" : "/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="546,369,0,0" TextWrapping="Wrap" Text="Mot de passe : " VerticalAlignment="Top"/>
     </Grid>
 </Page>

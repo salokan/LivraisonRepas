@@ -19,7 +19,7 @@ namespace LivraisonRepas.Vues
         {
             Utilisateurs utilisateur = await _service._utilisateurs.AuthentificationUtilisateur(Pseudo.Text, Password.Password);
 
-            if (utilisateur == null)
+            if (utilisateur.Id == 0)
             {
                 MessageDialog msgDialog = new MessageDialog("Le pseudo ou le mot de passe est incorrect", "Attention");
                 await msgDialog.ShowAsync();
@@ -33,7 +33,7 @@ namespace LivraisonRepas.Vues
 
         private void InscriptionClick(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof (Identification));
         }
     }
 }
