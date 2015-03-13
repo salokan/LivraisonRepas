@@ -33,7 +33,7 @@ namespace LivraisonRepas.Vues
 
         private void InscriptionClick(object sender, RoutedEventArgs e)
         {
-            _service._utilisateurs.AddUtilisateurs(new Utilisateurs{Adresse = "adresse",Password = "password",Pseudo = "pseudo",Type = "livreur"});
+            Frame.Navigate(typeof (Identification));
         }
     }
 }

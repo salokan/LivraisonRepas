@@ -40,6 +40,11 @@ namespace LivraisonRepasService
         {
             return _utilisateurs.AuthentificationUtilisateur(pseudo, password);
         }
+
+        public bool ExistePseudo(string pseudo)
+        {
+            return _utilisateurs.ExistePseudo(pseudo);
+        }
         #endregion
 
         #region Commandes

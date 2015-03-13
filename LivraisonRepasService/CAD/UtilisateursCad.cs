@@ -128,5 +128,28 @@ namespace LivraisonRepasService.CAD
 
             return compositeUtilisateurs;
         }
+
+        public bool ExistePseudo(string pseudo)
+        {
+            bool existe = false;
+
+            List<Utilisateurs> utilisateurs;
+            using (var bdd = new LivraisonRepasEntities())
+            {
+                var requete = from u in bdd.Utilisateurs
+                              select u;
+
+                utilisateurs = requete.ToList();
+
+
+                foreach (Utilisateurs utilisateursListe in utilisateurs)
+                {
+                    if (utilisateursListe.Pseudo.Equals(pseudo))
+                        existe = true;
+                }
+            }
+
+            return existe;
+        }
     }
 }

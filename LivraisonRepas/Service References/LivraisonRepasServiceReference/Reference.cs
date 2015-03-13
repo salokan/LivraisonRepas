@@ -457,6 +457,9 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateur", ReplyAction="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateurResponse")]
         System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite> AuthentificationUtilisateurAsync(string pseudo, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/ExistePseudo", ReplyAction="http://tempuri.org/ILivraisonRepasService/ExistePseudoResponse")]
+        System.Threading.Tasks.Task<bool> ExistePseudoAsync(string pseudo);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILivraisonRepasService/GetCommandes", ReplyAction="http://tempuri.org/ILivraisonRepasService/GetCommandesResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite>> GetCommandesAsync();
         
@@ -538,6 +541,10 @@ namespace LivraisonRepas.LivraisonRepasServiceReference {
         
         public System.Threading.Tasks.Task<LivraisonRepas.LivraisonRepasServiceReference.UtilisateursComposite> AuthentificationUtilisateurAsync(string pseudo, string password) {
             return base.Channel.AuthentificationUtilisateurAsync(pseudo, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExistePseudoAsync(string pseudo) {
+            return base.Channel.ExistePseudoAsync(pseudo);
         }
         
         public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<LivraisonRepas.LivraisonRepasServiceReference.CommandesComposite>> GetCommandesAsync() {

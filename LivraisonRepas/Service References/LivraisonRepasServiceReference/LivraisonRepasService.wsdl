@@ -44,6 +44,12 @@
   <wsdl:message name="ILivraisonRepasService_AuthentificationUtilisateur_OutputMessage">
     <wsdl:part name="parameters" element="tns:AuthentificationUtilisateurResponse" />
   </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_ExistePseudo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistePseudo" />
+  </wsdl:message>
+  <wsdl:message name="ILivraisonRepasService_ExistePseudo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistePseudoResponse" />
+  </wsdl:message>
   <wsdl:message name="ILivraisonRepasService_GetCommandes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCommandes" />
   </wsdl:message>
@@ -98,6 +104,10 @@
     <wsdl:operation name="AuthentificationUtilisateur">
       <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateur" message="tns:ILivraisonRepasService_AuthentificationUtilisateur_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateurResponse" message="tns:ILivraisonRepasService_AuthentificationUtilisateur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistePseudo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/ExistePseudo" message="tns:ILivraisonRepasService_ExistePseudo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILivraisonRepasService/ExistePseudoResponse" message="tns:ILivraisonRepasService_ExistePseudo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCommandes">
       <wsdl:input wsaw:Action="http://tempuri.org/ILivraisonRepasService/GetCommandes" message="tns:ILivraisonRepasService_GetCommandes_InputMessage" />
@@ -169,6 +179,15 @@
     </wsdl:operation>
     <wsdl:operation name="AuthentificationUtilisateur">
       <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/AuthentificationUtilisateur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistePseudo">
+      <soap:operation soapAction="http://tempuri.org/ILivraisonRepasService/ExistePseudo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

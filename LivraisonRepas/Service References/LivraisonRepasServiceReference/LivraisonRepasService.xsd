@@ -79,6 +79,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ExistePseudo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pseudo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExistePseudoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExistePseudoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetCommandes">
     <xs:complexType>
       <xs:sequence />

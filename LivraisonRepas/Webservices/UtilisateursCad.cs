@@ -80,5 +80,10 @@ namespace LivraisonRepas.Webservices
 
             return utilisateurs;
         }
+
+        public async Task<bool> ExistePseudo(string pseudo)
+        {
+            return await _client.ExistePseudoAsync(pseudo);
+        }
     }
 }

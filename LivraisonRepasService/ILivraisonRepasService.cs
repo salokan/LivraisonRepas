@@ -25,6 +25,8 @@ namespace LivraisonRepasService
         void UpdateUtilisateurs(Utilisateurs u);
         [OperationContract]
         UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password);
+        [OperationContract]
+        bool ExistePseudo(string pseudo);
         #endregion
 
         #region Commandes

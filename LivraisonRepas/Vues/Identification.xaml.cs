@@ -1,35 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
-// Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
+using LivraisonRepas.LivraisonRepasServiceReference;
+using LivraisonRepas.Webservices;
 
 namespace LivraisonRepas.Vues
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Identification : Page
+    public sealed partial class Identification
     {
+        private Services _service;
         public Identification()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            _service = new Services();
         }
 
-        private void Button_Inscription(object sender, RoutedEventArgs e)
+        private async void InscriptionClick(object sender, RoutedEventArgs e)
         {
-
+            if (Pseudo.Text.Equals("") || Password.Text.Equals("") || Adresse.Text.Equals(""))
+            {
+                MessageDialog msgDialog = new MessageDialog("Aucun champ ne doit être vide", "Erreur");
+                await msgDialog.ShowAsync();
+            }
+            else
+            {
+                if (await _service._utilisateurs.ExistePseudo(Pseudo.Text))
+                {
+                    MessageDialog msgDialog = new MessageDialog("Le pseudo existe déjà!", "Attention");
+                    await msgDialog.ShowAsync();
+                }
+                else
+                {
+                    _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text });
+                    Frame.GoBack();
+                }
+            } 
         }
     }
 }
