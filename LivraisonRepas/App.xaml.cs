@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using LivraisonRepas.Vues;
+using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
 
 namespace LivraisonRepas
 {
@@ -22,7 +23,7 @@ namespace LivraisonRepas
             InitializeComponent();
             Suspending += OnSuspending;
         }
-
+        public Utilisateurs UserConnected { set; get; }
         /// <summary>
         /// Invoqué lorsque l'application est lancée normalement par l'utilisateur final.  D'autres points d'entrée
         /// seront utilisés par exemple au moment du lancement de l'application pour l'ouverture d'un fichier spécifique.

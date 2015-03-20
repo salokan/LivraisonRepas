@@ -27,8 +27,9 @@ namespace LivraisonRepas.Vues
             else
             {
                 MessageDialog msgDialog = new MessageDialog("Bravo", "Félicitation");
+                ((App)(App.Current)).UserConnected = utilisateur;
                 await msgDialog.ShowAsync();
-                Frame.Navigate(typeof(Client), utilisateur);
+                Frame.Navigate(typeof(Client));
             }
         }
 

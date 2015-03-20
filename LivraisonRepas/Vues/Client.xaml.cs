@@ -25,6 +25,7 @@ namespace LivraisonRepas.Vues
     /// </summary>
     public sealed partial class Client : Page
     {
+        private Utilisateurs _userConnected;
 
         public Client()
         {
@@ -45,12 +46,8 @@ namespace LivraisonRepas.Vues
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ListViewPanier.Items.Clear();
-            Utilisateurs user = e.Parameter as Utilisateurs;
-            if (user != null)
-            {
-                username.Text = user.Pseudo;
-            }
+            _userConnected = ((App)(App.Current)).UserConnected;
+            username.Text = _userConnected.Pseudo;
         }
     }
 }
