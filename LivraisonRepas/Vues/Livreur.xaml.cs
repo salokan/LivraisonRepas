@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
-// Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
+using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
 
 namespace LivraisonRepas.Vues
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Livreur : Page
+    public sealed partial class Livreur
     {
+        private Utilisateurs _userConnected;
         public Livreur()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
+            Init();
+        }
+
+        private async void Init()
+        {
+            _userConnected = ((App)(Application.Current)).UserConnected;
+            MessageDialog msgDialog = new MessageDialog("Bienvenue " + _userConnected.Pseudo, "Attention");
+            await msgDialog.ShowAsync();
         }
     }
 }

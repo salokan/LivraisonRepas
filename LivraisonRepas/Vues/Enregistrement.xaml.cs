@@ -7,10 +7,10 @@ using LivraisonRepas.Webservices;
 
 namespace LivraisonRepas.Vues
 {
-    public sealed partial class Identification
+    public sealed partial class Enregistrement
     {
         private Services _service;
-        public Identification()
+        public Enregistrement()
         {
             InitializeComponent();
             _service = new Services();
@@ -40,14 +40,24 @@ namespace LivraisonRepas.Vues
                     }
                     else
                     {
-                        _service._utilisateurs.AddUtilisateurs(new Utilisateurs
-                                                               {
-                                                                   Adresse = Adresse.Text,
-                                                                   Pseudo = Pseudo.Text,
-                                                                   Password = Password.Password,
-                                                                   Type = "client"
-                                                               });
-                        Frame.Navigate(typeof(Client));
+                        try
+                        {
+                            Utilisateurs utilisateur = new Utilisateurs{
+                                Adresse = Adresse.Text,
+                                Pseudo = Pseudo.Text,
+                                Password = Password.Password,
+                                Type = "client"
+                            };
+                            _service._utilisateurs.AddUtilisateurs(utilisateur);
+                            ((App)(Application.Current)).UserConnected = utilisateur;
+
+                            Frame.Navigate(typeof(Client));
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageDialog msgDialog = new MessageDialog("Execption dans enregistrement : " + ex, "Erreur");
+                            msgDialog.ShowAsync();          
+                        }   
                     }
                 }
             } 

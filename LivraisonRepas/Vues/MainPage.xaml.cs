@@ -26,6 +26,7 @@ namespace LivraisonRepas.Vues
             }
             else
             {
+                ((App)(Application.Current)).UserConnected = utilisateur;
                 if (utilisateur.Type.Equals("livreur"))
                 {
                     Frame.Navigate(typeof(Livreur), utilisateur);
@@ -44,7 +45,7 @@ namespace LivraisonRepas.Vues
 
         private void InscriptionClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof (Identification));
+            Frame.Navigate(typeof (Enregistrement));
         }
     }
 }
