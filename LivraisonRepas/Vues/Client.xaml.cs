@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,7 +26,6 @@ namespace LivraisonRepas.Vues
     public sealed partial class Client : Page
     {
 
-        private ObservableCollection<String> _listViewPanier = new ObservableCollection<String>();
         public Client()
         {
             this.InitializeComponent();
@@ -34,12 +35,22 @@ namespace LivraisonRepas.Vues
         {
             ComboBoxItem typeItem = (ComboBoxItem)Menu.SelectedItem;
             string selected = typeItem.Content.ToString();
-            _listViewPanier.Add(selected);
+            ListViewPanier.Items.Add(selected);
         }
 
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ListViewPanier.Items.Clear();
+            Utilisateurs user = e.Parameter as Utilisateurs;
+            if (user != null)
+            {
+                username.Text = user.Pseudo;
+            }
         }
     }
 }

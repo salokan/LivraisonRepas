@@ -26,8 +26,19 @@ namespace LivraisonRepas.Vues
             }
             else
             {
-                MessageDialog msgDialog = new MessageDialog("Bravo", "Félicitation");
-                await msgDialog.ShowAsync();
+                if (utilisateur.Type.Equals("livreur"))
+                {
+                    Frame.Navigate(typeof(Livreur), utilisateur);
+                }
+                else if (utilisateur.Type.Equals("client"))
+                {
+                    Frame.Navigate(typeof(Client), utilisateur);
+                }
+                else
+                {
+                    MessageDialog msgDialog = new MessageDialog("Il y a un problème concernant le type de l'utilisateur!", "Erreur");
+                    await msgDialog.ShowAsync();
+                }    
             }
         }
 

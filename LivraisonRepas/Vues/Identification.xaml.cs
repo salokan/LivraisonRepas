@@ -18,7 +18,7 @@ namespace LivraisonRepas.Vues
 
         private async void InscriptionClick(object sender, RoutedEventArgs e)
         {
-            if (Pseudo.Text.Equals("") || Password.Text.Equals("") || Adresse.Text.Equals(""))
+            if (Pseudo.Text.Equals("") || Password.Password.Equals("") || Adresse.Text.Equals(""))
             {
                 MessageDialog msgDialog = new MessageDialog("Aucun champ ne doit être vide", "Erreur");
                 await msgDialog.ShowAsync();
@@ -27,7 +27,8 @@ namespace LivraisonRepas.Vues
             {
                 if (!System.Text.RegularExpressions.Regex.IsMatch(Pseudo.Text, "^[a-zA-Z]+$"))
                 {
-                    MessageDialog msgDialog = new MessageDialog("Le pseudo ne doit être composé que de lettres", "Erreur");
+                    MessageDialog msgDialog = new MessageDialog("Le pseudo ne doit être composé que de lettres",
+                        "Erreur");
                     await msgDialog.ShowAsync();
                 }
                 else
@@ -39,10 +40,16 @@ namespace LivraisonRepas.Vues
                     }
                     else
                     {
-                        _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text, Type = "livreur" });
-                        Frame.GoBack();
+                        _service._utilisateurs.AddUtilisateurs(new Utilisateurs
+                                                               {
+                                                                   Adresse = Adresse.Text,
+                                                                   Pseudo = Pseudo.Text,
+                                                                   Password = Password.Password,
+                                                                   Type = "client"
+                                                               });
+                        Frame.Navigate(typeof(Client));
                     }
-                }      
+                }
             } 
         }
         private void BackClick(object sender, RoutedEventArgs e)
@@ -51,3 +58,5 @@ namespace LivraisonRepas.Vues
         }
     }
 }
+
+        
