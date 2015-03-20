@@ -25,19 +25,27 @@ namespace LivraisonRepas.Vues
             }
             else
             {
-                if (await _service._utilisateurs.ExistePseudo(Pseudo.Text))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(Pseudo.Text, "^[a-zA-Z]+$"))
                 {
-                    MessageDialog msgDialog = new MessageDialog("Le pseudo existe déjà!", "Attention");
+                    MessageDialog msgDialog = new MessageDialog("Le pseudo ne doit être composé que de lettres", "Erreur");
                     await msgDialog.ShowAsync();
                 }
                 else
                 {
-                    _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text, Type = "livreur"});
-                    Frame.GoBack();
-                }
+                    if (await _service._utilisateurs.ExistePseudo(Pseudo.Text))
+                    {
+                        MessageDialog msgDialog = new MessageDialog("Le pseudo existe déjà!", "Attention");
+                        await msgDialog.ShowAsync();
+                    }
+                    else
+                    {
+                        _service._utilisateurs.AddUtilisateurs(new Utilisateurs { Adresse = Adresse.Text, Pseudo = Pseudo.Text, Password = Password.Text, Type = "livreur" });
+                        Frame.GoBack();
+                    }
+                }      
             } 
         }
-        private async void BackClick(object sender, RoutedEventArgs e)
+        private void BackClick(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
         }
