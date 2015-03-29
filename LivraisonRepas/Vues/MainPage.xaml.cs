@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using Windows.Data.Json;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.Web.Http;
@@ -56,13 +51,13 @@ namespace LivraisonRepas.Vues
             }
         }
 
-        private async void InscriptionClick(object sender, RoutedEventArgs e)
+        private void InscriptionClick(object sender, RoutedEventArgs e)
         {
             //Frame.Navigate(typeof (Enregistrement));
-            //GetMethod();
+            GetMethod();
             //PostMethod();
             //PutMethod();
-            DeleteMethod();
+            //DeleteMethod();
         }
 
         public async void GetMethod()
@@ -81,7 +76,7 @@ namespace LivraisonRepas.Vues
             headers.UserAgent.ParseAdd("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
 
 
-            string adresse = "http://localhost:1234/LivraisonRepas/Test/coucou";
+            string adresse = "http://localhost:1234/LivraisonRepas/Test/coucou/coucou2";
 
             string reponse;
 
@@ -117,7 +112,7 @@ namespace LivraisonRepas.Vues
 
         public async void PostMethod()
         {
-            string json = "{\"Id\":1,\"Titre\":\"Titanic!!!!!!!!!!!!!\",\"Annee\":1997,\"Entrees\":20.64,\"Uri\":null}";
+            string json = "{\"ContenuValue\":\"contenu\",\"EtatValue\":\"etat\",\"IdClientsValue\":1,\"IdCommandesValue\":2,\"IdLivreursValue\":3}";
 
             string adresse = "http://localhost:1234/LivraisonRepas/Test/Create";
 
