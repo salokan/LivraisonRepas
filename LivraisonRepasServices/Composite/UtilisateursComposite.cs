@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace LivraisonRepasServices.Composite
 {
@@ -19,5 +20,11 @@ namespace LivraisonRepasServices.Composite
 
         [DataMember]
         public string TypeValue { get; set; }
+    }
+
+    public class UtilisateursListComposite
+    {
+        [DataMember]
+        public List<UtilisateursComposite> UtilisateursListe { get; set; }
     }
 }

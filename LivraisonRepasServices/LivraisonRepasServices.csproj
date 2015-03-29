@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAD\CommandesCad.cs" />
+    <Compile Include="CAD\UtilisateursCad.cs" />
     <Compile Include="Commandes.cs">
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>

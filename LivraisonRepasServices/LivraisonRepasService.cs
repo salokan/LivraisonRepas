@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceModel.Activation;
+using LivraisonRepasServices.CAD;
 using LivraisonRepasServices.Composite;
 
 namespace LivraisonRepasServices
@@ -9,144 +9,84 @@ namespace LivraisonRepasServices
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class LivraisonRepasService : ILivraisonRepasService
     {
-        #region Test
-
-        public CommandesComposite TestGet(string test)
-        {
-            CommandesComposite cc = new CommandesComposite
-                                    {
-                                        ContenuValue = "contenu",
-                                        EtatValue = "etat",
-                                        IdClientsValue = 1,
-                                        IdCommandesValue = 2,
-                                        IdLivreursValue = 3
-                                    };
-
-            return cc;
-        }
-
-        public CommandesComposite TestGet2(string test, string test2)
-        {
-            CommandesComposite cc = new CommandesComposite
-            {
-                ContenuValue = "contenu",
-                EtatValue = "etat",
-                IdClientsValue = 1,
-                IdCommandesValue = 2,
-                IdLivreursValue = 3
-            };
-
-            return cc;
-        }
-
-
-        public void TestPOST(CommandesComposite test)
-        {
-            string post;
-        }
-
-        public void TestPUT(string test, CommandesComposite test2)
-        {
-            string put;
-        }
-
-        public void TestDelete(string test)
-        {
-            string delete;
-        }
-
-        #endregion
+        private readonly CommandesCad _commandes = new CommandesCad();
+        private readonly UtilisateursCad _utilisateurs = new UtilisateursCad();
 
         #region Commandes
 
         public CommandesListComposite GetCommandes()
         {
-            CommandesListComposite c = new CommandesListComposite();
+            CommandesListComposite commandesList = new CommandesListComposite();
 
-            List<CommandesComposite> l = new List<CommandesComposite>();
-            CommandesComposite cc = new CommandesComposite
-            {
-                ContenuValue = "contenu",
-                EtatValue = "etat",
-                IdClientsValue = 1,
-                IdCommandesValue = 2,
-                IdLivreursValue = 3
-            };
+            commandesList.CommandesListe = _commandes.GetCommandes();
 
-            CommandesComposite cc2 = new CommandesComposite
-            {
-                ContenuValue = "contenu2",
-                EtatValue = "etat2",
-                IdClientsValue = 12,
-                IdCommandesValue = 22,
-                IdLivreursValue = 32
-            };
-
-            l.Add(cc);
-            l.Add(cc2);
-
-            c.CommandesListe = l;
-
-            return c;
+            return commandesList;
         }
 
         public CommandesComposite GetCommande(string id)
         {
-            throw new System.NotImplementedException();
+            return _commandes.GetCommandes(int.Parse(id));
         }
 
         public void AddCommande(CommandesComposite c)
         {
-            throw new System.NotImplementedException();
+            _commandes.AddCommandes(c);
         }
 
         public void UpdateCommande(string id, CommandesComposite c)
         {
-            throw new System.NotImplementedException();
+            _commandes.UpdateCommandes(c);
         }
 
         public void DeleteCommande(string id)
         {
-            throw new System.NotImplementedException();
+            _commandes.DeleteCommandes(int.Parse(id));
         }
 
         #endregion
 
         #region Utilisateurs
 
-        public CommandesComposite GetUtilisateur()
+        public UtilisateursListComposite GetUtilisateurs()
         {
-            throw new System.NotImplementedException();
+            UtilisateursListComposite utilisateursList = new UtilisateursListComposite();
+
+            utilisateursList.UtilisateursListe = _utilisateurs.GetUtilisateurs();
+
+            return utilisateursList;
         }
 
-        public CommandesComposite GetUtilisateurs(string id)
+        public UtilisateursComposite GetUtilisateur(string id)
         {
-            throw new System.NotImplementedException();
+           return  _utilisateurs.GetUtilisateurs(int.Parse(id));
         }
 
         public void AddUtilisateur(UtilisateursComposite u)
         {
-            throw new System.NotImplementedException();
+            _utilisateurs.AddUtilisateurs(u);
         }
 
         public void UpdateUtilisateur(string id, UtilisateursComposite u)
         {
-            throw new System.NotImplementedException();
+            _utilisateurs.UpdateUtilisateurs(u);
         }
 
         public void DeleteUtilisateur(string id)
         {
-            throw new System.NotImplementedException();
+            _utilisateurs.DeleteUtilisateurs(int.Parse(id));
         }
 
         public UtilisateursComposite AuthentificationUtilisateur(string pseudo, string password)
         {
-            throw new System.NotImplementedException();
+            return _utilisateurs.AuthentificationUtilisateur(pseudo, password);
         }
 
         public string ExistePseudo(string pseudo)
         {
-            throw new System.NotImplementedException();
+            if (_utilisateurs.ExistePseudo(pseudo))
+                return "true";
+            else
+                return "false";
         }
 
         #endregion
