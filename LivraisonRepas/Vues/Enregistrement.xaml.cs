@@ -33,7 +33,7 @@ namespace LivraisonRepas.Vues
                 }
                 else
                 {
-                    if (await _service._utilisateurs.ExistePseudo(Pseudo.Text))
+                    if (await _service.Utilisateurs.ExistePseudo(Pseudo.Text))
                     {
                         MessageDialog msgDialog = new MessageDialog("Le pseudo existe déjà!", "Attention");
                         await msgDialog.ShowAsync();
@@ -48,7 +48,7 @@ namespace LivraisonRepas.Vues
                                 Password = Password.Password,
                                 Type = "client"
                             };
-                            _service._utilisateurs.AddUtilisateurs(utilisateur);
+                            _service.Utilisateurs.AddUtilisateurs(utilisateur);
                             ((App)(Application.Current)).UserConnected = utilisateur;
 
                             Frame.Navigate(typeof(Client));

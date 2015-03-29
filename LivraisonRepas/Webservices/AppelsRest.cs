@@ -1,67 +1,24 @@
 ﻿using System;
-using Windows.UI.Popups;
-using Windows.UI.Xaml;
+using System.Threading.Tasks;
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
 using Windows.Web.Http.Headers;
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
-using LivraisonRepas.Webservices;
-using HttpClient = Windows.Web.Http.HttpClient;
-using HttpMethod = Windows.Web.Http.HttpMethod;
-using HttpRequestMessage = Windows.Web.Http.HttpRequestMessage;
-using HttpResponseMessage = Windows.Web.Http.HttpResponseMessage;
 
-
-namespace LivraisonRepas.Vues
+namespace LivraisonRepas.Webservices
 {
-    public sealed partial class MainPage
+    public class AppelsRest
     {
-        private Services _service;
-        public MainPage()
+        private string _url;
+
+        public AppelsRest()
         {
-            InitializeComponent();
-            _service = new Services();
+            _url = "http://localhost:1234/LivraisonRepas";
         }
 
-        private async void ConnexionClick(object sender, RoutedEventArgs e)
+        public async Task<string> GetMethod(string parametre)
         {
-            Utilisateurs utilisateur = await _service.Utilisateurs.AuthentificationUtilisateur(Pseudo.Text, Password.Password);
+            _url = _url + parametre;
 
-            if (utilisateur.Id == 0)
-            {
-                MessageDialog msgDialog = new MessageDialog("Le pseudo ou le mot de passe est incorrect", "Attention");
-                await msgDialog.ShowAsync();
-            }
-            else
-            {
-                ((App)(Application.Current)).UserConnected = utilisateur;
-                if (utilisateur.Type.Equals("livreur"))
-                {
-                    Frame.Navigate(typeof(Livreur), utilisateur);
-                }
-                else if (utilisateur.Type.Equals("client"))
-                {
-                    Frame.Navigate(typeof(Client), utilisateur);
-                }
-                else
-                {
-                    MessageDialog msgDialog = new MessageDialog("Il y a un problème concernant le type de l'utilisateur!", "Erreur");
-                    await msgDialog.ShowAsync();
-                }    
-            }
-        }
-
-        private void InscriptionClick(object sender, RoutedEventArgs e)
-        {
-            //Frame.Navigate(typeof (Enregistrement));
-            GetMethod();
-            //PostMethod();
-            //PutMethod();
-            //DeleteMethod();
-        }
-
-        public async void GetMethod()
-        {
             HttpClient _httpClient;
             HttpResponseMessage _response;
 
@@ -76,14 +33,12 @@ namespace LivraisonRepas.Vues
             headers.UserAgent.ParseAdd("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
 
 
-            string adresse = "http://localhost:1234/LivraisonRepas/Test/coucou/coucou2";
-
             string reponse;
 
             _response = new HttpResponseMessage();
 
             Uri resourceUri;
-            if (!Uri.TryCreate(adresse.Trim(), UriKind.Absolute, out resourceUri))
+            if (!Uri.TryCreate(_url.Trim(), UriKind.Absolute, out resourceUri))
             {
             }
             if (resourceUri.Scheme != "http" && resourceUri.Scheme != "https")
@@ -106,8 +61,7 @@ namespace LivraisonRepas.Vues
             }
             reponse = responseBodyAsText;
 
-            MessageDialog msgDialog = new MessageDialog(reponse, "Information");
-            await msgDialog.ShowAsync();
+            return reponse;
         }
 
         public async void PostMethod()

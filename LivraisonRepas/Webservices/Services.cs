@@ -8,8 +8,8 @@ namespace LivraisonRepas.Webservices
         private LivraisonRepasUtilisateursServiceClient _clientUtilisateurs;
         private LivraisonRepasCommandesServiceClient _clientCommandes;
 
-        public CommandesCad _commandes{ get; set; }
-        public UtilisateursCad _utilisateurs { get; set; }
+        public CommandesCad Commandes{ get; set; }
+        public UtilisateursCad Utilisateurs { get; set; }
 
         public Services()
         {
@@ -21,9 +21,9 @@ namespace LivraisonRepas.Webservices
             _clientUtilisateurs = new LivraisonRepasUtilisateursServiceClient();
             _clientCommandes = new LivraisonRepasCommandesServiceClient();
 
-            _utilisateurs = new UtilisateursCad(_clientUtilisateurs);
+            Utilisateurs = new UtilisateursCad(_clientUtilisateurs);
 
-            _commandes = new CommandesCad(_clientCommandes);
+            Commandes = new CommandesCad(_clientCommandes);
         }
     }
 }
