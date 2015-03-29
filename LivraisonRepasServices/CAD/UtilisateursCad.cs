@@ -24,11 +24,11 @@ namespace LivraisonRepasServices.CAD
                 foreach (Utilisateurs u in utilisateurs)
                 {
                     UtilisateursComposite composite = new UtilisateursComposite();
-                    composite.IdUtilisateursValue = u.Id;
-                    composite.PseudoValue = u.Pseudo;
-                    composite.PasswordValue = u.Password;
-                    composite.AdresseValue = u.Adresse;
-                    composite.TypeValue = u.Type;
+                    composite.IdUtilisateurs = u.Id;
+                    composite.Pseudo = u.Pseudo;
+                    composite.Password = u.Password;
+                    composite.Adresse = u.Adresse;
+                    composite.Type = u.Type;
                     utilisateursList.Add(composite);
                 }
             }
@@ -52,11 +52,11 @@ namespace LivraisonRepasServices.CAD
 
             if (utilisateurs != null)
             {
-                compositeUtilisateurs.IdUtilisateursValue = utilisateurs.Id;
-                compositeUtilisateurs.PseudoValue = utilisateurs.Pseudo;
-                compositeUtilisateurs.PasswordValue = utilisateurs.Password;
-                compositeUtilisateurs.AdresseValue = utilisateurs.Adresse;
-                compositeUtilisateurs.TypeValue = utilisateurs.Type;
+                compositeUtilisateurs.IdUtilisateurs = utilisateurs.Id;
+                compositeUtilisateurs.Pseudo = utilisateurs.Pseudo;
+                compositeUtilisateurs.Password = utilisateurs.Password;
+                compositeUtilisateurs.Adresse = utilisateurs.Adresse;
+                compositeUtilisateurs.Type = utilisateurs.Type;
             }
 
             return compositeUtilisateurs;
@@ -66,11 +66,11 @@ namespace LivraisonRepasServices.CAD
         {
             Utilisateurs u = new Utilisateurs();
 
-            u.Id = uu.IdUtilisateursValue;
-            u.Pseudo = uu.PseudoValue;
-            u.Password = uu.PasswordValue;
-            u.Adresse = uu.AdresseValue;
-            u.Type = uu.TypeValue;
+            u.Id = uu.IdUtilisateurs;
+            u.Pseudo = uu.Pseudo;
+            u.Password = uu.Password;
+            u.Adresse = uu.Adresse;
+            u.Type = uu.Type;
 
             using (var bdd = new LivraisonRepasEntities())
             {
@@ -101,11 +101,11 @@ namespace LivraisonRepasServices.CAD
         {
             Utilisateurs u = new Utilisateurs();
 
-            u.Id = uu.IdUtilisateursValue;
-            u.Pseudo = uu.PseudoValue;
-            u.Password = uu.PasswordValue;
-            u.Adresse = uu.AdresseValue;
-            u.Type = uu.TypeValue;
+            u.Id = uu.IdUtilisateurs;
+            u.Pseudo = uu.Pseudo;
+            u.Password = uu.Password;
+            u.Adresse = uu.Adresse;
+            u.Type = uu.Type;
 
             using (var bdd = new LivraisonRepasEntities())
             {
@@ -135,11 +135,11 @@ namespace LivraisonRepasServices.CAD
 
             if (utilisateurs != null)
             {
-                compositeUtilisateurs.IdUtilisateursValue = utilisateurs.Id;
-                compositeUtilisateurs.PseudoValue = utilisateurs.Pseudo;
-                compositeUtilisateurs.PasswordValue = utilisateurs.Password;
-                compositeUtilisateurs.AdresseValue = utilisateurs.Adresse;
-                compositeUtilisateurs.TypeValue = utilisateurs.Type;
+                compositeUtilisateurs.IdUtilisateurs = utilisateurs.Id;
+                compositeUtilisateurs.Pseudo = utilisateurs.Pseudo;
+                compositeUtilisateurs.Password = utilisateurs.Password;
+                compositeUtilisateurs.Adresse = utilisateurs.Adresse;
+                compositeUtilisateurs.Type = utilisateurs.Type;
             }
 
             return compositeUtilisateurs;

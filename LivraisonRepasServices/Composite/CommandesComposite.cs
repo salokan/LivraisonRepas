@@ -7,19 +7,19 @@ namespace LivraisonRepasServices.Composite
     public class CommandesComposite
     {
         [DataMember]
-        public int IdCommandesValue { get; set; }
+        public int IdCommandes { get; set; }
 
         [DataMember]
-        public int IdClientsValue { get; set; }
+        public int IdClients { get; set; }
 
         [DataMember]
-        public int IdLivreursValue { get; set; }
+        public int IdLivreurs { get; set; }
 
         [DataMember]
-        public string ContenuValue { get; set; }
+        public string Contenu { get; set; }
 
         [DataMember]
-        public string EtatValue { get; set; }
+        public string Etat { get; set; }
     }
 
     [DataContract]

@@ -24,11 +24,11 @@ namespace LivraisonRepasServices.CAD
                 foreach (Commandes c in commandes)
                 {
                     CommandesComposite composite = new CommandesComposite();
-                    composite.IdCommandesValue = c.Id;
-                    composite.IdClientsValue = c.Id_Client;
-                    composite.IdLivreursValue = c.Id_Livreur;
-                    composite.ContenuValue = c.Contenu;
-                    composite.EtatValue = c.Etat;
+                    composite.IdCommandes = c.Id;
+                    composite.IdClients = c.Id_Client;
+                    composite.IdLivreurs = c.Id_Livreur;
+                    composite.Contenu = c.Contenu;
+                    composite.Etat = c.Etat;
                     commandesList.Add(composite);
                 }
             }
@@ -52,11 +52,11 @@ namespace LivraisonRepasServices.CAD
 
             if (commande != null)
             {
-                compositeCommandes.IdCommandesValue = commande.Id;
-                compositeCommandes.IdClientsValue = commande.Id_Client;
-                compositeCommandes.IdLivreursValue = commande.Id_Livreur;
-                compositeCommandes.ContenuValue = commande.Contenu;
-                compositeCommandes.EtatValue = commande.Etat;
+                compositeCommandes.IdCommandes = commande.Id;
+                compositeCommandes.IdClients = commande.Id_Client;
+                compositeCommandes.IdLivreurs = commande.Id_Livreur;
+                compositeCommandes.Contenu = commande.Contenu;
+                compositeCommandes.Etat = commande.Etat;
             }
 
             return compositeCommandes;
@@ -66,11 +66,11 @@ namespace LivraisonRepasServices.CAD
         {
             Commandes c = new Commandes();
 
-            c.Id = cc.IdCommandesValue;
-            c.Id_Client = cc.IdClientsValue;
-            c.Id_Livreur = cc.IdLivreursValue;
-            c.Contenu = cc.ContenuValue;
-            c.Etat = cc.EtatValue;
+            c.Id = cc.IdCommandes;
+            c.Id_Client = cc.IdClients;
+            c.Id_Livreur = cc.IdLivreurs;
+            c.Contenu = cc.Contenu;
+            c.Etat = cc.Etat;
 
             using (var bdd = new LivraisonRepasEntities())
             {
@@ -101,11 +101,11 @@ namespace LivraisonRepasServices.CAD
         {
             Commandes c = new Commandes();
 
-            c.Id = cc.IdCommandesValue;
-            c.Id_Client = cc.IdClientsValue;
-            c.Id_Livreur = cc.IdLivreursValue;
-            c.Contenu = cc.ContenuValue;
-            c.Etat = cc.EtatValue;
+            c.Id = cc.IdCommandes;
+            c.Id_Client = cc.IdClients;
+            c.Id_Livreur = cc.IdLivreurs;
+            c.Contenu = cc.Contenu;
+            c.Etat = cc.Etat;
 
             using (var bdd = new LivraisonRepasEntities())
             {

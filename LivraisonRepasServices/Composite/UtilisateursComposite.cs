@@ -7,19 +7,19 @@ namespace LivraisonRepasServices.Composite
     public class UtilisateursComposite
     {
         [DataMember]
-        public int IdUtilisateursValue { get; set; }
+        public int IdUtilisateurs { get; set; }
 
         [DataMember]
-        public string PseudoValue { get; set; }
+        public string Pseudo { get; set; }
 
         [DataMember]
-        public string PasswordValue { get; set; }
+        public string Password { get; set; }
 
         [DataMember]
-        public string AdresseValue { get; set; }
+        public string Adresse { get; set; }
 
         [DataMember]
-        public string TypeValue { get; set; }
+        public string Type { get; set; }
     }
 
     public class UtilisateursListComposite
