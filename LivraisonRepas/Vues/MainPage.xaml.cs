@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using LivraisonRepas.Models;
@@ -45,7 +44,7 @@ namespace LivraisonRepas.Vues
             }
         }
 
-        private async void InscriptionClick(object sender, RoutedEventArgs e)
+        private void InscriptionClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof (Enregistrement));
         }
