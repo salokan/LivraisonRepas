@@ -1,8 +1,7 @@
 ﻿using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
-
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
+using LivraisonRepas.Models;
 using LivraisonRepas.Webservices;
 
 namespace LivraisonRepas.Vues
@@ -42,12 +41,7 @@ namespace LivraisonRepas.Vues
                     {
                         try
                         {
-                            Utilisateurs utilisateur = new Utilisateurs{
-                                Adresse = Adresse.Text,
-                                Pseudo = Pseudo.Text,
-                                Password = Password.Password,
-                                Type = "client"
-                            };
+                            Utilisateurs utilisateur = new Utilisateurs(Adresse.Text,Pseudo.Text,Password.Password,"client");
                             _service.Utilisateurs.AddUtilisateurs(utilisateur);
                             ((App)(Application.Current)).UserConnected = utilisateur;
 

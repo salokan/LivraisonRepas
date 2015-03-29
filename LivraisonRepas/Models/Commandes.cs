@@ -1,25 +1,38 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Windows.Data.Json;
 
 namespace LivraisonRepas.Models
 {
+    [DataContract]
     public class Commandes
     {
-        private string _id;
-        private string _idClient;
-        private string _idLivreur;
+        private int _id;
+        private int _idClient;
+        private int _idLivreur;
         private string _contenu;
         private string _etat;
 
         public Commandes(JsonObject jsonObject)
         {
-            Id = jsonObject.GetNamedString("Id");
-            IdClient = jsonObject.GetNamedString("_idClient");
-            IdLivreur = jsonObject.GetNamedString("_idLivreur");
-            Contenu = jsonObject.GetNamedString("_contenu");
-            Etat = jsonObject.GetNamedString("_etat");
+            Contenu = jsonObject.GetNamedString("Contenu");
+            Etat = jsonObject.GetNamedString("Etat");
+            IdClients = (int)jsonObject.GetNamedNumber("IdClients");
+            IdCommandes = (int)jsonObject.GetNamedNumber("IdCommandes");
+            IdLivreurs = (int)jsonObject.GetNamedNumber("IdLivreurs");    
         }
-        public string Id
+
+        public Commandes(string contenu, string etat, int idClients, int idLivreurs)
+        {
+            Contenu = contenu;
+            Etat = etat;
+            IdClients = idClients;
+            IdCommandes = 0;
+            IdLivreurs = idLivreurs;
+        }
+
+        [DataMember(Name = "IdCommandes", IsRequired = true)]
+        public int IdCommandes
         {
             get
             {
@@ -27,15 +40,12 @@ namespace LivraisonRepas.Models
             }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("value");
-                }
                 _id = value;
             }
         }
 
-        public string IdClient
+        [DataMember(Name = "IdClients", IsRequired = true)]
+        public int IdClients
         {
             get
             {
@@ -43,27 +53,21 @@ namespace LivraisonRepas.Models
             }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("value");
-                }
                 _idClient = value;
             }
         }
 
-        public string IdLivreur
+        [DataMember(Name = "IdLivreurs", IsRequired = true)]
+        public int IdLivreurs
         {
             get { return _idLivreur; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("value");
-                }
                 _idLivreur = value;
             }
         }
 
+        [DataMember(Name = "Contenu", IsRequired = true)]
         public string Contenu
         {
             get
@@ -80,6 +84,7 @@ namespace LivraisonRepas.Models
             }
         }
 
+        [DataMember(Name = "Etat", IsRequired = true)]
         public string Etat
         {
             get

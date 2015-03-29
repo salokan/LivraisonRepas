@@ -1,36 +1,30 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.IO;
+using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
-using LivraisonRepas.LivraisonRepasCommandesServiceReference;
+using Windows.Data.Json;
+using LivraisonRepas.Models;
 
 namespace LivraisonRepas.Webservices
 {
     public class CommandesCad
     {
-        LivraisonRepasCommandesServiceClient _client;
-
-        public CommandesCad(LivraisonRepasCommandesServiceClient client)
-        {
-            _client = client;
-        }
+        private AppelsRest _service = new AppelsRest();
 
         public async Task<List<Commandes>> GetCommandes()
         {
-            ObservableCollection<CommandesComposite> commandesList;
+            string response = await _service.GetMethodWithoutParameter("Commandes");
+
+            JsonObject jsonObject = JsonObject.Parse(response);
+
             List<Commandes> commandes = new List<Commandes>();
 
-            commandesList = await _client.GetCommandesAsync();
-
-            foreach (CommandesComposite c in commandesList)
+            foreach (IJsonValue jsonValue in jsonObject.GetNamedArray("CommandesListe"))
             {
-                Commandes commande = new Commandes();
-                commande.Id = c.IdCommandesValue;
-                commande.Id_Client = c.IdClientsValue;
-                commande.Id_Livreur = c.IdLivreursValue;
-                commande.Contenu = c.ContenuValue;
-                commande.Etat = c.EtatValue;
-
-                commandes.Add(commande);
+                if (jsonValue.ValueType == JsonValueType.Object)
+                {
+                    commandes.Add(new Commandes(jsonValue.GetObject()));
+                }
             }
 
             return commandes;
@@ -38,32 +32,48 @@ namespace LivraisonRepas.Webservices
 
         public async Task<Commandes> GetCommandes(int id)
         {
-            Commandes commande = new Commandes();
+            string response = await _service.GetMethod("Commande", id.ToString());
 
-            CommandesComposite commandesComposite = await _client.GetCommandeAsync(id);
+            JsonObject jsonObject = JsonObject.Parse(response);
 
-            commande.Id = commandesComposite.IdCommandesValue;
-            commande.Id_Client = commandesComposite.IdClientsValue;
-            commande.Id_Livreur = commandesComposite.IdLivreursValue;
-            commande.Contenu = commandesComposite.ContenuValue;
-            commande.Etat = commandesComposite.EtatValue;
+            Commandes commandes = new Commandes(jsonObject);
 
-            return commande;
+            return commandes;
         }
 
-        public async void AddCommandes(Commandes u)
+        public void AddCommandes(Commandes c)
         {
-            await _client.AddCommandesAsync(u);
+            string json;
+
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Commandes));
+            MemoryStream ms = new MemoryStream();
+            js.WriteObject(ms, c);
+
+            ms.Position = 0;
+            StreamReader sr = new StreamReader(ms);
+            json = sr.ReadToEnd();
+
+            _service.PostMethod("Commande", json);
         }
 
-        public async void DeleteCommandes(int id)
+        public void DeleteCommandes(int id)
         {
-            await _client.DeleteCommandesAsync(id);
+            _service.DeleteMethod("Commande", id.ToString());
         }
 
-        public async void UpdateCommandes(Commandes u)
+        public void UpdateCommandes(Commandes c)
         {
-            await _client.UpdateCommandesAsync(u);
+            string json;
+
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Commandes));
+            MemoryStream ms = new MemoryStream();
+            js.WriteObject(ms, c);
+
+            ms.Position = 0;
+            StreamReader sr = new StreamReader(ms);
+            json = sr.ReadToEnd();
+
+            _service.PutMethod("Commande", json, "none");
         }
     }
 }

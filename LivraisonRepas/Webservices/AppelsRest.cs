@@ -12,30 +12,22 @@ namespace LivraisonRepas.Webservices
 
         public AppelsRest()
         {
-            _url = "http://localhost:1234/LivraisonRepas";
+            _url = "http://localhost:1234/LivraisonRepas/";
         }
 
-        public async Task<string> GetMethod(string parametre)
+        public async Task<string> GetMethod(string table, string parametre)
         {
-            _url = _url + parametre;
-
-            HttpClient _httpClient;
-            HttpResponseMessage _response;
+            _url = _url + table + "/" + parametre;
 
             HttpBaseProtocolFilter rootFilter = new HttpBaseProtocolFilter();
             rootFilter.CacheControl.ReadBehavior = HttpCacheReadBehavior.MostRecent;
             rootFilter.CacheControl.WriteBehavior = HttpCacheWriteBehavior.NoCache;
-            _httpClient = new HttpClient(rootFilter);
+            HttpClient httpClient = new HttpClient(rootFilter);
 
-            var headers = _httpClient.DefaultRequestHeaders;
+            var headers = httpClient.DefaultRequestHeaders;
 
             headers.UserAgent.ParseAdd("ie");
             headers.UserAgent.ParseAdd("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
-
-
-            string reponse;
-
-            _response = new HttpResponseMessage();
 
             Uri resourceUri;
             if (!Uri.TryCreate(_url.Trim(), UriKind.Absolute, out resourceUri))
@@ -49,53 +41,89 @@ namespace LivraisonRepas.Webservices
 
             try
             {
-                _response = await _httpClient.GetAsync(resourceUri);
+                HttpResponseMessage response = await httpClient.GetAsync(resourceUri);
 
-                _response.EnsureSuccessStatusCode();
+                response.EnsureSuccessStatusCode();
 
-                responseBodyAsText = await _response.Content.ReadAsStringAsync();
+                responseBodyAsText = await response.Content.ReadAsStringAsync();
             }
             catch (Exception)
             {
                 responseBodyAsText = "";
             }
-            reponse = responseBodyAsText;
+            string reponse = responseBodyAsText;
 
             return reponse;
         }
 
-        public async void PostMethod()
+        public async Task<string> GetMethodWithoutParameter(string table)
         {
-            string json = "{\"ContenuValue\":\"contenu\",\"EtatValue\":\"etat\",\"IdClientsValue\":1,\"IdCommandesValue\":2,\"IdLivreursValue\":3}";
+            _url = _url + table;
 
-            string adresse = "http://localhost:1234/LivraisonRepas/Test/Create";
+            HttpBaseProtocolFilter rootFilter = new HttpBaseProtocolFilter();
+            rootFilter.CacheControl.ReadBehavior = HttpCacheReadBehavior.MostRecent;
+            rootFilter.CacheControl.WriteBehavior = HttpCacheWriteBehavior.NoCache;
+            HttpClient httpClient = new HttpClient(rootFilter);
 
-            HttpClient httpClient = new HttpClient();
-            HttpRequestMessage msg = new HttpRequestMessage(new HttpMethod("POST"), new Uri(adresse));
-            msg.Content = new HttpStringContent(json);
-            msg.Content.Headers.ContentType = new HttpMediaTypeHeaderValue("application/json");
-            HttpResponseMessage response = await httpClient.SendRequestAsync(msg).AsTask();
+            var headers = httpClient.DefaultRequestHeaders;
 
+            headers.UserAgent.ParseAdd("ie");
+            headers.UserAgent.ParseAdd("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
+
+            Uri resourceUri;
+            if (!Uri.TryCreate(_url.Trim(), UriKind.Absolute, out resourceUri))
+            {
+            }
+            if (resourceUri.Scheme != "http" && resourceUri.Scheme != "https")
+            {
+            }
+
+            string responseBodyAsText;
+
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync(resourceUri);
+
+                response.EnsureSuccessStatusCode();
+
+                responseBodyAsText = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                responseBodyAsText = "";
+            }
+            string reponse = responseBodyAsText;
+
+            return reponse;
         }
 
-        public async void PutMethod()
+        public async void PostMethod(string table, string json)
         {
-            string json = "{\"Id\":1,\"Titre\":\"Titanic!!!!!!!!!!!!!\",\"Annee\":1997,\"Entrees\":20.64,\"Uri\":null}";
-
-            string adresse = "http://localhost:1234/LivraisonRepas/Test/Update/123";
+            _url = _url + table + "/Create";
 
             HttpClient httpClient = new HttpClient();
-            HttpRequestMessage msg = new HttpRequestMessage(new HttpMethod("PUT"), new Uri(adresse));
+            HttpRequestMessage msg = new HttpRequestMessage(new HttpMethod("POST"), new Uri(_url));
             msg.Content = new HttpStringContent(json);
             msg.Content.Headers.ContentType = new HttpMediaTypeHeaderValue("application/json");
-            HttpResponseMessage response = await httpClient.SendRequestAsync(msg).AsTask();
+            await httpClient.SendRequestAsync(msg).AsTask();
         }
 
-        public async void DeleteMethod()
+        public async void PutMethod(string table, string json, string parametre)
         {
-            string adresse = "http://localhost:1234/LivraisonRepas/Test/Delete";
+            _url = _url + table + "/Update/" + parametre;
+
             HttpClient httpClient = new HttpClient();
-            var result = await httpClient.DeleteAsync(new Uri(String.Format("{0}/{1}", adresse, "123")));
+            HttpRequestMessage msg = new HttpRequestMessage(new HttpMethod("PUT"), new Uri(_url));
+            msg.Content = new HttpStringContent(json);
+            msg.Content.Headers.ContentType = new HttpMediaTypeHeaderValue("application/json");
+            await httpClient.SendRequestAsync(msg).AsTask();
+        }
+
+        public async void DeleteMethod(string table, string parametre)
+        {
+            _url = _url + table + "/Delete";
+            HttpClient httpClient = new HttpClient();
+            await httpClient.DeleteAsync(new Uri(String.Format("{0}/{1}", _url, parametre)));
         }
     }
 }

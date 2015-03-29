@@ -27,8 +27,8 @@ namespace LivraisonRepasServices.CAD
                     composite.IdCommandes = c.Id;
                     composite.IdClients = c.Id_Client;
                     composite.IdLivreurs = c.Id_Livreur;
-                    composite.Contenu = c.Contenu;
-                    composite.Etat = c.Etat;
+                    composite.Contenu = c.Contenu ?? "NULL";
+                    composite.Etat = c.Etat ?? "NULL";
                     commandesList.Add(composite);
                 }
             }
@@ -55,8 +55,16 @@ namespace LivraisonRepasServices.CAD
                 compositeCommandes.IdCommandes = commande.Id;
                 compositeCommandes.IdClients = commande.Id_Client;
                 compositeCommandes.IdLivreurs = commande.Id_Livreur;
-                compositeCommandes.Contenu = commande.Contenu;
-                compositeCommandes.Etat = commande.Etat;
+                compositeCommandes.Contenu = commande.Contenu ?? "NULL";
+                compositeCommandes.Etat = commande.Etat ?? "NULL";
+            }
+            else
+            {
+                compositeCommandes.IdCommandes = 0;
+                compositeCommandes.IdClients = 0;
+                compositeCommandes.IdLivreurs = 0;
+                compositeCommandes.Contenu = "NULL";
+                compositeCommandes.Etat = "NULL";
             }
 
             return compositeCommandes;

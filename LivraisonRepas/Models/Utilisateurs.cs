@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Windows.Data.Json;
 
 namespace LivraisonRepas.Models
 {
+    [DataContract]
     public class Utilisateurs
     {
-        private string _id;
+        private int _id;
         private string _pseudo;
         private string _password;
         private string _adresse;
@@ -13,13 +15,24 @@ namespace LivraisonRepas.Models
 
         public Utilisateurs(JsonObject jsonObject)
         {
-            Id = jsonObject.GetNamedString("Id");
-            Pseudo = jsonObject.GetNamedString("Pseudo");
-            Password = jsonObject.GetNamedString("Password");
             Adresse = jsonObject.GetNamedString("Adresse");
+            IdUtilisateurs = (int) jsonObject.GetNamedNumber("IdUtilisateurs");
+            Password = jsonObject.GetNamedString("Password");
+            Pseudo = jsonObject.GetNamedString("Pseudo");  
             Type = jsonObject.GetNamedString("Type");
         }
-        public string Id
+
+        public Utilisateurs(string pseudo, string password, string adresse, string type)
+        {
+            IdUtilisateurs = 0;
+            Pseudo = pseudo;
+            Password = password;
+            Adresse = adresse;
+            Type = type;
+        }
+
+        [DataMember(Name = "IdUtilisateurs", IsRequired = true)]
+        public int IdUtilisateurs
         {
             get
             {
@@ -27,14 +40,11 @@ namespace LivraisonRepas.Models
             }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("value");
-                }
                 _id = value;
             }
         }
 
+        [DataMember(Name = "Pseudo", IsRequired = true)]
         public string Pseudo
         {
             get
@@ -51,6 +61,7 @@ namespace LivraisonRepas.Models
             }
         }
 
+        [DataMember(Name = "Password", IsRequired = true)]
         public string Password
         {
             get { return _password; }
@@ -64,6 +75,7 @@ namespace LivraisonRepas.Models
             }
         }
 
+        [DataMember(Name = "Adresse", IsRequired = true)]
         public string Adresse
         {
             get
@@ -80,6 +92,7 @@ namespace LivraisonRepas.Models
             }
         }
 
+        [DataMember(Name = "Type", IsRequired = true)]
         public string Type
         {
             get

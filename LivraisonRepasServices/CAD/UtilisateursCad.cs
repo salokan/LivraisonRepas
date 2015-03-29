@@ -25,10 +25,10 @@ namespace LivraisonRepasServices.CAD
                 {
                     UtilisateursComposite composite = new UtilisateursComposite();
                     composite.IdUtilisateurs = u.Id;
-                    composite.Pseudo = u.Pseudo;
-                    composite.Password = u.Password;
-                    composite.Adresse = u.Adresse;
-                    composite.Type = u.Type;
+                    composite.Pseudo = u.Pseudo ?? "NULL";
+                    composite.Password = u.Password ?? "NULL";
+                    composite.Adresse = u.Adresse ?? "NULL";
+                    composite.Type = u.Type ?? "NULL";
                     utilisateursList.Add(composite);
                 }
             }
@@ -53,10 +53,18 @@ namespace LivraisonRepasServices.CAD
             if (utilisateurs != null)
             {
                 compositeUtilisateurs.IdUtilisateurs = utilisateurs.Id;
-                compositeUtilisateurs.Pseudo = utilisateurs.Pseudo;
-                compositeUtilisateurs.Password = utilisateurs.Password;
-                compositeUtilisateurs.Adresse = utilisateurs.Adresse;
-                compositeUtilisateurs.Type = utilisateurs.Type;
+                compositeUtilisateurs.Pseudo = utilisateurs.Pseudo ?? "NULL";
+                compositeUtilisateurs.Password = utilisateurs.Password ?? "NULL";
+                compositeUtilisateurs.Adresse = utilisateurs.Adresse ?? "NULL";
+                compositeUtilisateurs.Type = utilisateurs.Type ?? "NULL";
+            }
+            else
+            {
+                compositeUtilisateurs.IdUtilisateurs = 0;
+                compositeUtilisateurs.Pseudo = "NULL";
+                compositeUtilisateurs.Password = "NULL";
+                compositeUtilisateurs.Adresse = "NULL";
+                compositeUtilisateurs.Type = "NULL";
             }
 
             return compositeUtilisateurs;
@@ -136,10 +144,18 @@ namespace LivraisonRepasServices.CAD
             if (utilisateurs != null)
             {
                 compositeUtilisateurs.IdUtilisateurs = utilisateurs.Id;
-                compositeUtilisateurs.Pseudo = utilisateurs.Pseudo;
-                compositeUtilisateurs.Password = utilisateurs.Password;
-                compositeUtilisateurs.Adresse = utilisateurs.Adresse;
-                compositeUtilisateurs.Type = utilisateurs.Type;
+                compositeUtilisateurs.Pseudo = utilisateurs.Pseudo ?? "NULL";
+                compositeUtilisateurs.Password = utilisateurs.Password ?? "NULL";
+                compositeUtilisateurs.Adresse = utilisateurs.Adresse ?? "NULL";
+                compositeUtilisateurs.Type = utilisateurs.Type ?? "NULL";
+            }
+            else
+            {
+                compositeUtilisateurs.IdUtilisateurs = 0;
+                compositeUtilisateurs.Pseudo = "NULL";
+                compositeUtilisateurs.Password = "NULL";
+                compositeUtilisateurs.Adresse = "NULL";
+                compositeUtilisateurs.Type = "NULL";
             }
 
             return compositeUtilisateurs;
