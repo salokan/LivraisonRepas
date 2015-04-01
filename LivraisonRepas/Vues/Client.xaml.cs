@@ -1,52 +1,44 @@
-﻿using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System;
 using Windows.UI.Popups;
+using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// Pour en savoir plus sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace LivraisonRepas.Vues
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Client : Page
+    public sealed partial class Client
     {
         private Utilisateurs _userConnected;
 
         public Client()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        private void Ajouter_Panier_Click(object sender, RoutedEventArgs e)
+        private void AjouterPanierClick(object sender, RoutedEventArgs e)
         {
             ComboBoxItem typeItem = (ComboBoxItem)Menu.SelectedItem;
-            string selected = typeItem.Content.ToString();
-            ListViewPanier.Items.Add(selected);
+            if (typeItem != null)
+            {
+                if (typeItem.Content != null)
+                {
+                    string selected = typeItem.Content.ToString();
+                    if (ListViewPanier.Items != null) ListViewPanier.Items.Add(selected);
+                }
+            }
         }
 
-        private void Valider_Click(object sender, RoutedEventArgs e)
+        private async void ValiderClick(object sender, RoutedEventArgs e)
         {
-
+            _userConnected = ((App)(Application.Current)).UserConnected;
+            MessageDialog msgDialog = new MessageDialog("Bienvenue " + _userConnected.Pseudo, "Attention");
+            await msgDialog.ShowAsync();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _userConnected = ((App)(App.Current)).UserConnected;
+            _userConnected = ((App)(Application.Current)).UserConnected;
             username.Text = _userConnected.Pseudo;
         }
     }

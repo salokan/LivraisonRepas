@@ -26,16 +26,26 @@ namespace LivraisonRepas.Vues
             }
             else
             {
-                MessageDialog msgDialog = new MessageDialog("Bravo", "Félicitation");
-                ((App)(App.Current)).UserConnected = utilisateur;
-                await msgDialog.ShowAsync();
-                Frame.Navigate(typeof(Client));
+                ((App)(Application.Current)).UserConnected = utilisateur;
+                if (utilisateur.Type.Equals("livreur"))
+                {
+                    Frame.Navigate(typeof(Livreur), utilisateur);
+                }
+                else if (utilisateur.Type.Equals("client"))
+                {
+                    Frame.Navigate(typeof(Client), utilisateur);
+                }
+                else
+                {
+                    MessageDialog msgDialog = new MessageDialog("Il y a un problème concernant le type de l'utilisateur!", "Erreur");
+                    await msgDialog.ShowAsync();
+                }    
             }
         }
 
         private void InscriptionClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof (Identification));
+            Frame.Navigate(typeof (Enregistrement));
         }
     }
 }
