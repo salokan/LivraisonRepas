@@ -3,6 +3,7 @@ using Windows.Data.Json;
 
 namespace LivraisonRepas.Models
 {
+    [DataContract]
     public class Menus
     {
         private int _id;
@@ -14,16 +15,15 @@ namespace LivraisonRepas.Models
         public Menus(JsonObject jsonObject)
         {
             IdMenus = (int)jsonObject.GetNamedNumber("IdMenus");
-            NomMenus = jsonObject.GetNamedString("NomRestaurants");
+            IdRestaurant = (int)jsonObject.GetNamedNumber("IdRestaurant");
+            NomMenus = jsonObject.GetNamedString("NomMenus");
             Prix = jsonObject.GetNamedNumber("Prix");
-            Stock = (int)jsonObject.GetNamedNumber("Stock");
-            IdRestaurant = (int) jsonObject.GetNamedNumber("IdRestaurant");
-            
+            Stock = (int)jsonObject.GetNamedNumber("Stock"); 
         }
 
-        public Menus(int id, string nom, double prix, int stock, int idRestaurant)
+        public Menus(string nom, double prix, int stock, int idRestaurant)
         {
-            IdMenus = id;
+            IdMenus = 0;
             NomMenus = nom;
             Prix = prix;
             Stock = stock;

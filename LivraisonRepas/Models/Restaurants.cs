@@ -3,6 +3,7 @@ using Windows.Data.Json;
 
 namespace LivraisonRepas.Models
 {
+    [DataContract]
     public class Restaurants
     {
         private int _id;
@@ -14,9 +15,9 @@ namespace LivraisonRepas.Models
             NomRestaurants = jsonObject.GetNamedString("NomRestaurants");
         }
 
-        public Restaurants(int id, string nom)
+        public Restaurants(string nom)
         {
-            IdRestaurants = id;
+            IdRestaurants = 0;
             NomRestaurants = nom;
         }
 
