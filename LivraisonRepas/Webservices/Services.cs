@@ -4,6 +4,9 @@
     {
         public CommandesCad Commandes{ get; set; }
         public UtilisateursCad Utilisateurs { get; set; }
+        public RestaurantsCad Restaurants { get; set; }
+        public MenusCad Menus { get; set; }
+        public MenuRestaurantCad MenusRestaurant { get; set; }
 
         public Services()
         {
@@ -14,6 +17,9 @@
         {
             Utilisateurs = new UtilisateursCad();
             Commandes = new CommandesCad();
+            Restaurants = new RestaurantsCad();
+            Menus = new MenusCad();
+            MenusRestaurant = new MenuRestaurantCad();
         }
     }
 }
