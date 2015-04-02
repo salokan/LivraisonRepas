@@ -16,7 +16,7 @@ namespace LivraisonRepasServices.Composite
         public int IdLivreurs { get; set; }
 
         [DataMember]
-        public string Contenu { get; set; }
+        public double Prix { get; set; }
 
         [DataMember]
         public string Etat { get; set; }

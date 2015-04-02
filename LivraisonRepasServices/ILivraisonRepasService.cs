@@ -62,5 +62,77 @@ namespace LivraisonRepasServices
         string ExistePseudo(string pseudo);
 
         #endregion
+
+        #region Restaurants
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Restaurants", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        RestaurantsListComposite GetRestaurants();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Restaurant/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        RestaurantsComposite GetRestaurant(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "Restaurant/Create", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void AddRestaurant(RestaurantsComposite r);
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "Restaurant/Update/{id}", RequestFormat = WebMessageFormat.Json)]
+        void UpdateRestaurant(string id, RestaurantsComposite r);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "Restaurant/Delete/{id}")]
+        void DeleteRestaurant(string id);
+
+        #endregion
+
+        #region Menus
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Menus", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenusListComposite GetMenus();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Menu/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenusComposite GetMenu(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "Menu/Create", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void AddMenu(MenusComposite m);
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "Menu/Update/{id}", RequestFormat = WebMessageFormat.Json)]
+        void UpdateMenu(string id, MenusComposite m);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "Menu/Delete/{id}")]
+        void DeleteMenu(string id);
+
+        #endregion
+
+        #region MenuRestaurant
+
+        [OperationContract]
+        [WebGet(UriTemplate = "MenuRestaurant", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenuRestaurantListComposite GetMenusRestaurant();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "MenuRestaurant/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenuRestaurantComposite GetMenuRestaurant(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "MenuRestaurant/Create", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void AddMenuRestaurant(MenuRestaurantComposite mr);
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "MenuRestaurant/Update/{id}", RequestFormat = WebMessageFormat.Json)]
+        void UpdateMenuRestaurant(string id, MenuRestaurantComposite mr);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "MenuRestaurant/Delete/{id}")]
+        void DeleteMenuRestaurant(string id);
+
+        #endregion
     }
 }

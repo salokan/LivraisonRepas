@@ -12,12 +12,13 @@ namespace LivraisonRepasServices
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class MenuRestaurant
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public Nullable<int> idRestaurant { get; set; }
+        public Nullable<int> idMenu { get; set; }
+    
+        public virtual Menu Menu { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 }

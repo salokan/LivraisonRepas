@@ -11,6 +11,9 @@ namespace LivraisonRepasServices
     {
         private readonly CommandesCad _commandes = new CommandesCad();
         private readonly UtilisateursCad _utilisateurs = new UtilisateursCad();
+        private readonly RestaurantsCad _restaurants = new RestaurantsCad();
+        private readonly MenusCad _menus = new MenusCad();
+        private readonly MenuRestaurantCad _menuRestaurant = new MenuRestaurantCad();
 
         #region Commandes
 
@@ -58,7 +61,7 @@ namespace LivraisonRepasServices
 
         public UtilisateursComposite GetUtilisateur(string id)
         {
-           return  _utilisateurs.GetUtilisateurs(int.Parse(id));
+           return _utilisateurs.GetUtilisateurs(int.Parse(id));
         }
 
         public void AddUtilisateur(UtilisateursComposite u)
@@ -86,6 +89,105 @@ namespace LivraisonRepasServices
             if (_utilisateurs.ExistePseudo(pseudo))
                 return "true";
             return "false";
+        }
+
+        #endregion
+
+        #region Restaurants
+
+        public RestaurantsListComposite GetRestaurants()
+        {
+            RestaurantsListComposite restaurantsList = new RestaurantsListComposite();
+
+            restaurantsList.RestaurantsListe = _restaurants.GetRestaurants();
+
+            return restaurantsList;
+        }
+
+        public RestaurantsComposite GetRestaurant(string id)
+        {
+            return _restaurants.GetRestaurants(int.Parse(id));
+        }
+
+        public void AddRestaurant(RestaurantsComposite r)
+        {
+            _restaurants.AddRestaurants(r);
+        }
+
+        public void UpdateRestaurant(string id, RestaurantsComposite r)
+        {
+            _restaurants.UpdateRestaurants(r);
+        }
+
+        public void DeleteRestaurant(string id)
+        {
+            _restaurants.DeleteRestaurants(int.Parse(id));
+        }
+
+        #endregion
+
+        #region Menus
+
+        public MenusListComposite GetMenus()
+        {
+            MenusListComposite menusList = new MenusListComposite();
+
+            menusList.MenusListe = _menus.GetMenus();
+
+            return menusList;
+        }
+
+        public MenusComposite GetMenu(string id)
+        {
+            return _menus.GetMenus(int.Parse(id));
+        }
+
+        public void AddMenu(MenusComposite m)
+        {
+            _menus.AddMenus(m);
+        }
+
+        public void UpdateMenu(string id, MenusComposite m)
+        {
+            _menus.UpdateMenus(m);
+        }
+
+        public void DeleteMenu(string id)
+        {
+            _menus.DeleteMenus(int.Parse(id));
+        }
+
+        #endregion
+
+        #region MenuRestaurant
+
+        public MenuRestaurantListComposite GetMenusRestaurant()
+        {
+            MenuRestaurantListComposite menuRestaurantList = new MenuRestaurantListComposite();
+
+            menuRestaurantList.MenuRestaurantListe = _menuRestaurant.GetMenuRestaurant();
+
+            return menuRestaurantList;
+        }
+
+        public MenuRestaurantComposite GetMenuRestaurant(string id)
+        {
+            return _menuRestaurant.GetMenuRestaurant(int.Parse(id));
+        }
+
+        public void AddMenuRestaurant(MenuRestaurantComposite mr)
+        {
+            _menuRestaurant.AddMenuRestaurant(mr);
+        }
+
+        public void UpdateMenuRestaurant(string id, MenuRestaurantComposite mr)
+        {
+            _menuRestaurant.UpdateMenuRestaurant(mr);
+        }
+
+        public void DeleteMenuRestaurant(string id)
+        {
+            _menuRestaurant.DeleteMenuRestaurant(int.Parse(id));
         }
 
         #endregion
