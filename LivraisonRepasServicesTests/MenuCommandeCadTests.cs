@@ -5,6 +5,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LivraisonRepasServicesTests
 {
+    /* Chaque méthode de test commence par créer des utilisateurs pour leur associer une commande
+     * Une commande est ensuite créée, avec les utilisateurs créés précédemment
+     * pour finir un menu est créé, qui appartient à une commande
+     * Les traitements sont effectués sur le menu et l'Assert vérifie que cela s'est bien passé
+     */
+
     [TestClass]
     public class MenuCommandeCadTests
     {
