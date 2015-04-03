@@ -27,7 +27,7 @@ namespace LivraisonRepasServices.CAD
                     composite.IdCommandes = c.Id;
                     composite.IdClients = c.Id_Client;
                     composite.IdLivreurs = c.Id_Livreur;
-                    composite.Contenu = c.Contenu ?? "NULL";
+                    if (c.Prix != null) composite.Prix = (double) c.Prix;
                     composite.Etat = c.Etat ?? "NULL";
                     commandesList.Add(composite);
                 }
@@ -55,7 +55,7 @@ namespace LivraisonRepasServices.CAD
                 compositeCommandes.IdCommandes = commande.Id;
                 compositeCommandes.IdClients = commande.Id_Client;
                 compositeCommandes.IdLivreurs = commande.Id_Livreur;
-                compositeCommandes.Contenu = commande.Contenu ?? "NULL";
+                if (commande.Prix != null) compositeCommandes.Prix = (double) commande.Prix;
                 compositeCommandes.Etat = commande.Etat ?? "NULL";
             }
             else
@@ -63,7 +63,7 @@ namespace LivraisonRepasServices.CAD
                 compositeCommandes.IdCommandes = 0;
                 compositeCommandes.IdClients = 0;
                 compositeCommandes.IdLivreurs = 0;
-                compositeCommandes.Contenu = "NULL";
+                compositeCommandes.Prix = 0;
                 compositeCommandes.Etat = "NULL";
             }
 
@@ -77,7 +77,7 @@ namespace LivraisonRepasServices.CAD
             c.Id = cc.IdCommandes;
             c.Id_Client = cc.IdClients;
             c.Id_Livreur = cc.IdLivreurs;
-            c.Contenu = cc.Contenu;
+            c.Prix = cc.Prix;
             c.Etat = cc.Etat;
 
             using (var bdd = new LivraisonRepasEntities())
@@ -112,7 +112,7 @@ namespace LivraisonRepasServices.CAD
             c.Id = cc.IdCommandes;
             c.Id_Client = cc.IdClients;
             c.Id_Livreur = cc.IdLivreurs;
-            c.Contenu = cc.Contenu;
+            c.Prix = cc.Prix;
             c.Etat = cc.Etat;
 
             using (var bdd = new LivraisonRepasEntities())

@@ -10,21 +10,21 @@ namespace LivraisonRepas.Models
         private int _id;
         private int _idClient;
         private int _idLivreur;
-        private string _contenu;
+        private double _prix;
         private string _etat;
 
         public Commandes(JsonObject jsonObject)
         {
-            Contenu = jsonObject.GetNamedString("Contenu");
+            Prix = jsonObject.GetNamedNumber("Prix");
             Etat = jsonObject.GetNamedString("Etat");
             IdClients = (int)jsonObject.GetNamedNumber("IdClients");
             IdCommandes = (int)jsonObject.GetNamedNumber("IdCommandes");
             IdLivreurs = (int)jsonObject.GetNamedNumber("IdLivreurs");    
         }
 
-        public Commandes(string contenu, string etat, int idClients, int idLivreurs)
+        public Commandes(double prix, string etat, int idClients, int idLivreurs)
         {
-            Contenu = contenu;
+            Prix = prix;
             Etat = etat;
             IdClients = idClients;
             IdCommandes = 0;
@@ -67,20 +67,16 @@ namespace LivraisonRepas.Models
             }
         }
 
-        [DataMember(Name = "Contenu", IsRequired = true)]
-        public string Contenu
+        [DataMember(Name = "Prix", IsRequired = true)]
+        public double Prix
         {
             get
             {
-                return _contenu;
+                return _prix;
             }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("value");
-                }
-                _contenu = value;
+                _prix = value;
             }
         }
 

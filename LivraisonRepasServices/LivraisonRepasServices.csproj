@@ -51,11 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAD\CommandesCad.cs" />
+    <Compile Include="CAD\MenuRestaurantCad.cs" />
+    <Compile Include="CAD\MenusCad.cs" />
+    <Compile Include="CAD\RestaurantsCad.cs" />
     <Compile Include="CAD\UtilisateursCad.cs" />
     <Compile Include="Commandes.cs">
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Composite\CommandesComposite.cs" />
+    <Compile Include="Composite\MenuRestaurantComposite.cs" />
+    <Compile Include="Composite\MenusComposite.cs" />
+    <Compile Include="Composite\RestaurantsComposite.cs" />
     <Compile Include="Composite\UtilisateursComposite.cs" />
     <Compile Include="ILivraisonRepasService.cs" />
     <Compile Include="LivraisonRepasModel.Context.cs">
@@ -74,8 +80,14 @@
       <DependentUpon>LivraisonRepasModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="LivraisonRepasService.cs" />
+    <Compile Include="Menu.cs">
+      <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuRestaurant.cs">
+      <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="Restaurant.cs">
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilisateurs.cs">

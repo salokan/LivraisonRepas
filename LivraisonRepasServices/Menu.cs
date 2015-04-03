@@ -12,15 +12,20 @@ namespace LivraisonRepasServices
     using System;
     using System.Collections.Generic;
     
-    public partial class Commandes
+    public partial class Menu
     {
-        public int Id { get; set; }
-        public int Id_Client { get; set; }
-        public int Id_Livreur { get; set; }
-        public string Etat { get; set; }
-        public Nullable<double> Prix { get; set; }
+        public Menu()
+        {
+            this.MenuRestaurant = new HashSet<MenuRestaurant>();
+        }
     
-        public virtual Utilisateurs Utilisateurs { get; set; }
-        public virtual Utilisateurs Utilisateurs1 { get; set; }
+        public int id { get; set; }
+        public string nom { get; set; }
+        public Nullable<double> prix { get; set; }
+        public Nullable<int> stock { get; set; }
+        public Nullable<int> idRestaurant { get; set; }
+    
+        public virtual Restaurant Restaurant { get; set; }
+        public virtual ICollection<MenuRestaurant> MenuRestaurant { get; set; }
     }
 }
