@@ -8,6 +8,8 @@
         public MenusCad Menus { get; set; }
         public MenuRestaurantCad MenusRestaurant { get; set; }
 
+        public MenuCommandeCad MenusCommande { get; set; }
+
         public Services()
         {
             InitWebservices();
@@ -20,6 +22,7 @@
             Restaurants = new RestaurantsCad();
             Menus = new MenusCad();
             MenusRestaurant = new MenuRestaurantCad();
+            MenusCommande = new MenuCommandeCad();
         }
     }
 }

@@ -30,5 +30,6 @@ namespace LivraisonRepasServices
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<MenuRestaurant> MenuRestaurant { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
+        public virtual DbSet<MenuCommande> MenuCommande { get; set; }
     }
 }

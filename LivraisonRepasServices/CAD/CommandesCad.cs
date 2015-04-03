@@ -36,6 +36,37 @@ namespace LivraisonRepasServices.CAD
             return commandesList;
         }
 
+        public List<CommandesComposite> GetCommandesByLivreur(int idLivreur)
+        {
+            List<CommandesComposite> commandesList = new List<CommandesComposite>();
+
+            List<Commandes> commandes;
+            using (var bdd = new LivraisonRepasEntities())
+            {
+                var requete = from c in bdd.Commandes
+                              where c.Id_Livreur == idLivreur 
+                              select c;
+
+                commandes = requete.ToList();
+            }
+
+            if (commandes.Count > 0)
+            {
+                foreach (Commandes c in commandes)
+                {
+                    CommandesComposite composite = new CommandesComposite();
+                    composite.IdCommandes = c.Id;
+                    composite.IdClients = c.Id_Client;
+                    composite.IdLivreurs = c.Id_Livreur;
+                    if (c.Prix != null) composite.Prix = (double)c.Prix;
+                    composite.Etat = c.Etat ?? "NULL";
+                    commandesList.Add(composite);
+                }
+            }
+
+            return commandesList;
+        }
+
         public CommandesComposite GetCommandes(int id)
         {
             CommandesComposite compositeCommandes = new CommandesComposite();

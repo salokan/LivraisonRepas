@@ -34,6 +34,34 @@ namespace LivraisonRepasServices.CAD
             return menuRestaurantList;
         }
 
+        public List<MenuRestaurantComposite> GetMenuRestaurantByRestaurant(int idRestaurant)
+        {
+            List<MenuRestaurantComposite> menuRestaurantList = new List<MenuRestaurantComposite>();
+
+            List<MenuRestaurant> menuRestaurant;
+            using (var bdd = new LivraisonRepasEntities())
+            {
+                var requete = from mr in bdd.MenuRestaurant where mr.idRestaurant == idRestaurant
+                              select mr;
+
+                menuRestaurant = requete.ToList();
+            }
+
+            if (menuRestaurant.Count > 0)
+            {
+                foreach (MenuRestaurant mr in menuRestaurant)
+                {
+                    MenuRestaurantComposite composite = new MenuRestaurantComposite();
+                    composite.IdMenuRestaurant = mr.id;
+                    if (mr.idRestaurant != null) composite.IdRestaurant = (int)mr.idRestaurant;
+                    if (mr.idMenu != null) composite.IdMenu = (int)mr.idMenu;
+                    menuRestaurantList.Add(composite);
+                }
+            }
+
+            return menuRestaurantList;
+        }
+
         public MenuRestaurantComposite GetMenuRestaurant(int id)
         {
             MenuRestaurantComposite compositeMenuRestaurant = new MenuRestaurantComposite();

@@ -30,6 +30,25 @@ namespace LivraisonRepas.Webservices
             return menuRestaurant;
         }
 
+        public async Task<List<MenuRestaurant>> GetMenuRestaurantByRestaurant(int idRestaurant)
+        {
+            string response = await _service.GetMethodWithoutParameter("MenuRestaurantByRestaurant/" + idRestaurant);
+
+            JsonObject jsonObject = JsonObject.Parse(response);
+
+            List<MenuRestaurant> menuRestaurant = new List<MenuRestaurant>();
+
+            foreach (IJsonValue jsonValue in jsonObject.GetNamedArray("MenuRestaurantListe"))
+            {
+                if (jsonValue.ValueType == JsonValueType.Object)
+                {
+                    menuRestaurant.Add(new MenuRestaurant(jsonValue.GetObject()));
+                }
+            }
+
+            return menuRestaurant;
+        }
+
         public async Task<MenuRestaurant> GetMenuRestaurant(int id)
         {
             string response = await _service.GetMethod("MenuRestaurant", id.ToString());

@@ -15,6 +15,9 @@
         <AssociationConnector Association="LivraisonRepasModel.FK_Menu_Restaurant" />
         <AssociationConnector Association="LivraisonRepasModel.FK_MenuRestaurant_Menu" />
         <AssociationConnector Association="LivraisonRepasModel.FK_MenuRestaurant_Restaurant" />
+        <EntityTypeShape EntityType="LivraisonRepasModel.MenuCommande" Width="1.5" PointX="5.25" PointY="2.25" />
+        <AssociationConnector Association="LivraisonRepasModel.FK_MenuCommande_Commandes" />
+        <AssociationConnector Association="LivraisonRepasModel.FK_MenuCommande_Menu" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
