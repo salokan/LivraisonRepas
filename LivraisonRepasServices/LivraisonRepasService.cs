@@ -14,6 +14,7 @@ namespace LivraisonRepasServices
         private readonly RestaurantsCad _restaurants = new RestaurantsCad();
         private readonly MenusCad _menus = new MenusCad();
         private readonly MenuRestaurantCad _menuRestaurant = new MenuRestaurantCad();
+        private readonly MenuCommandeCad _menuCommande = new MenuCommandeCad();
 
         #region Commandes
 
@@ -22,6 +23,15 @@ namespace LivraisonRepasServices
             CommandesListComposite commandesList = new CommandesListComposite();
 
             commandesList.CommandesListe = _commandes.GetCommandes();
+
+            return commandesList;
+        }
+
+        public CommandesListComposite GetCommandesByLivreur(int idLivreur)
+        {
+            CommandesListComposite commandesList = new CommandesListComposite();
+
+            commandesList.CommandesListe = _commandes.GetCommandesByLivreur(idLivreur);
 
             return commandesList;
         }
@@ -170,6 +180,15 @@ namespace LivraisonRepasServices
             return menuRestaurantList;
         }
 
+        public MenuRestaurantListComposite GetMenusRestaurantByRestaurant(int idRestaurant)
+        {
+            MenuRestaurantListComposite menuRestaurantList = new MenuRestaurantListComposite();
+
+            menuRestaurantList.MenuRestaurantListe = _menuRestaurant.GetMenuRestaurantByRestaurant(idRestaurant);
+
+            return menuRestaurantList;
+        }
+
         public MenuRestaurantComposite GetMenuRestaurant(string id)
         {
             return _menuRestaurant.GetMenuRestaurant(int.Parse(id));
@@ -191,5 +210,47 @@ namespace LivraisonRepasServices
         }
 
         #endregion
+
+        #region MenuCommande
+
+        public MenuCommandeListComposite GetMenusCommande()
+        {
+            MenuCommandeListComposite menuCommandeList = new MenuCommandeListComposite();
+
+            menuCommandeList.MenuCommandeListe = _menuCommande.GetMenuCommande();
+
+            return menuCommandeList;
+        }
+
+        public MenuCommandeListComposite GetMenusCommandeByCommande(int idCommande)
+        {
+            MenuCommandeListComposite menuCommandeList = new MenuCommandeListComposite();
+
+            menuCommandeList.MenuCommandeListe = _menuCommande.GetMenuCommandeByCommande(idCommande);
+
+            return menuCommandeList;
+        }
+
+        public MenuCommandeComposite GetMenuCommande(string id)
+        {
+            return _menuCommande.GetMenuCommande(int.Parse(id));
+        }
+
+        public void AddMenuCommande(MenuCommandeComposite mc)
+        {
+            _menuCommande.AddMenuCommande(mc);
+        }
+
+        public void UpdateMenuCommande(string id, MenuCommandeComposite mc)
+        {
+            _menuCommande.UpdateMenuCommande(mc);
+        }
+
+        public void DeleteMenuCommande(string id)
+        {
+            _menuCommande.DeleteMenuCommande(int.Parse(id));
+        }
+
+        #endregion 
     }
 }

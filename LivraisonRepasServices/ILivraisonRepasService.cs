@@ -14,6 +14,10 @@ namespace LivraisonRepasServices
         CommandesListComposite GetCommandes();
 
         [OperationContract]
+        [WebGet(UriTemplate = "CommandesByLivreur/{idLivreur}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        CommandesListComposite GetCommandesByLivreur(int idLivreur);
+
+        [OperationContract]
         [WebGet(UriTemplate = "Commande/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         CommandesComposite GetCommande(string id);
 
@@ -118,6 +122,10 @@ namespace LivraisonRepasServices
         MenuRestaurantListComposite GetMenusRestaurant();
 
         [OperationContract]
+        [WebGet(UriTemplate = "MenuRestaurantByRestaurant/{idRestaurant}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenuRestaurantListComposite GetMenusRestaurantByRestaurant(int idRestaurant);
+
+        [OperationContract]
         [WebGet(UriTemplate = "MenuRestaurant/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         MenuRestaurantComposite GetMenuRestaurant(string id);
 
@@ -132,6 +140,34 @@ namespace LivraisonRepasServices
         [OperationContract]
         [WebInvoke(Method = "DELETE", UriTemplate = "MenuRestaurant/Delete/{id}")]
         void DeleteMenuRestaurant(string id);
+
+        #endregion
+
+        #region MenuCommande
+
+        [OperationContract]
+        [WebGet(UriTemplate = "MenuCommande", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenuCommandeListComposite GetMenusCommande();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "MenuCommandeByCommande/{idCommande}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenuCommandeListComposite GetMenusCommandeByCommande(int idCommande);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "MenuCommande/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        MenuCommandeComposite GetMenuCommande(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "MenuCommande/Create", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        void AddMenuCommande(MenuCommandeComposite mc);
+
+        [OperationContract]
+        [WebInvoke(Method = "PUT", UriTemplate = "MenuCommande/Update/{id}", RequestFormat = WebMessageFormat.Json)]
+        void UpdateMenuCommande(string id, MenuCommandeComposite mc);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", UriTemplate = "MenuCommande/Delete/{id}")]
+        void DeleteMenuCommande(string id);
 
         #endregion
     }

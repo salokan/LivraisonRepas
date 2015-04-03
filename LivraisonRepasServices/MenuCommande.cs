@@ -12,21 +12,13 @@ namespace LivraisonRepasServices
     using System;
     using System.Collections.Generic;
     
-    public partial class Commandes
+    public partial class MenuCommande
     {
-        public Commandes()
-        {
-            this.MenuCommande = new HashSet<MenuCommande>();
-        }
-    
         public int Id { get; set; }
-        public int Id_Client { get; set; }
-        public int Id_Livreur { get; set; }
-        public string Etat { get; set; }
-        public Nullable<double> Prix { get; set; }
+        public Nullable<int> IdMenu { get; set; }
+        public Nullable<int> IdCommande { get; set; }
     
-        public virtual Utilisateurs Utilisateurs { get; set; }
-        public virtual Utilisateurs Utilisateurs1 { get; set; }
-        public virtual ICollection<MenuCommande> MenuCommande { get; set; }
+        public virtual Commandes Commandes { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }

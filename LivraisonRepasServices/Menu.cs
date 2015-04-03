@@ -17,6 +17,7 @@ namespace LivraisonRepasServices
         public Menu()
         {
             this.MenuRestaurant = new HashSet<MenuRestaurant>();
+            this.MenuCommande = new HashSet<MenuCommande>();
         }
     
         public int id { get; set; }
@@ -27,5 +28,6 @@ namespace LivraisonRepasServices
     
         public virtual Restaurant Restaurant { get; set; }
         public virtual ICollection<MenuRestaurant> MenuRestaurant { get; set; }
+        public virtual ICollection<MenuCommande> MenuCommande { get; set; }
     }
 }

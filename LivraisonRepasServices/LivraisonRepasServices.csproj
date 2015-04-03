@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAD\CommandesCad.cs" />
+    <Compile Include="CAD\MenuCommandeCad.cs" />
     <Compile Include="CAD\MenuRestaurantCad.cs" />
     <Compile Include="CAD\MenusCad.cs" />
     <Compile Include="CAD\RestaurantsCad.cs" />
@@ -59,6 +60,7 @@
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Composite\CommandesComposite.cs" />
+    <Compile Include="Composite\MenuCommandeComposite.cs" />
     <Compile Include="Composite\MenuRestaurantComposite.cs" />
     <Compile Include="Composite\MenusComposite.cs" />
     <Compile Include="Composite\RestaurantsComposite.cs" />
@@ -81,6 +83,9 @@
     </Compile>
     <Compile Include="LivraisonRepasService.cs" />
     <Compile Include="Menu.cs">
+      <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCommande.cs">
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MenuRestaurant.cs">

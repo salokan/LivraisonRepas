@@ -25,6 +25,14 @@
           <Property Name="stock" Type="int" />
           <Property Name="idRestaurant" Type="int" />
         </EntityType>
+        <EntityType Name="MenuCommande">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMenu" Type="int" />
+          <Property Name="IdCommande" Type="int" />
+        </EntityType>
         <EntityType Name="MenuRestaurant">
           <Key>
             <PropertyRef Name="id" />
@@ -86,6 +94,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MenuCommande_Commandes">
+          <End Role="Commandes" Type="Self.Commandes" Multiplicity="0..1" />
+          <End Role="MenuCommande" Type="Self.MenuCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commandes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuCommande">
+              <PropertyRef Name="IdCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuCommande_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="MenuCommande" Type="Self.MenuCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MenuCommande">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuRestaurant_Menu">
           <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
           <End Role="MenuRestaurant" Type="Self.MenuRestaurant" Multiplicity="*" />
@@ -113,6 +145,7 @@
         <EntityContainer Name="LivraisonRepasModelStoreContainer">
           <EntitySet Name="Commandes" EntityType="Self.Commandes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuCommande" EntityType="Self.MenuCommande" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRestaurant" EntityType="Self.MenuRestaurant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
@@ -127,6 +160,14 @@
           <AssociationSet Name="FK_Menu_Restaurant" Association="Self.FK_Menu_Restaurant">
             <End Role="Restaurant" EntitySet="Restaurant" />
             <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuCommande_Commandes" Association="Self.FK_MenuCommande_Commandes">
+            <End Role="Commandes" EntitySet="Commandes" />
+            <End Role="MenuCommande" EntitySet="MenuCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuCommande_Menu" Association="Self.FK_MenuCommande_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuCommande" EntitySet="MenuCommande" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuRestaurant_Menu" Association="Self.FK_MenuRestaurant_Menu">
             <End Role="Menu" EntitySet="Menu" />
@@ -152,6 +193,7 @@
           <NavigationProperty Name="Utilisateurs" Relationship="Self.FK_Commandes_Utilisateurs" FromRole="Commandes" ToRole="Utilisateurs" />
           <NavigationProperty Name="Utilisateurs1" Relationship="Self.FK_Commandes_Utilisateurs1" FromRole="Commandes" ToRole="Utilisateurs" />
           <Property Name="Prix" Type="Double" />
+          <NavigationProperty Name="MenuCommande" Relationship="LivraisonRepasModel.FK_MenuCommande_Commandes" FromRole="Commandes" ToRole="MenuCommande" />
         </EntityType>
         <EntityType Name="Utilisateurs">
           <Key>
@@ -215,6 +257,15 @@
             <End Role="Restaurant" EntitySet="Restaurant" />
             <End Role="MenuRestaurant" EntitySet="MenuRestaurant" />
           </AssociationSet>
+          <EntitySet Name="MenuCommande" EntityType="LivraisonRepasModel.MenuCommande" />
+          <AssociationSet Name="FK_MenuCommande_Commandes" Association="LivraisonRepasModel.FK_MenuCommande_Commandes">
+            <End Role="Commandes" EntitySet="Commandes" />
+            <End Role="MenuCommande" EntitySet="MenuCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuCommande_Menu" Association="LivraisonRepasModel.FK_MenuCommande_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuCommande" EntitySet="MenuCommande" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Menu">
           <Key>
@@ -227,6 +278,7 @@
           <Property Name="idRestaurant" Type="Int32" />
           <NavigationProperty Name="Restaurant" Relationship="LivraisonRepasModel.FK_Menu_Restaurant" FromRole="Menu" ToRole="Restaurant" />
           <NavigationProperty Name="MenuRestaurant" Relationship="LivraisonRepasModel.FK_MenuRestaurant_Menu" FromRole="Menu" ToRole="MenuRestaurant" />
+          <NavigationProperty Name="MenuCommande" Relationship="LivraisonRepasModel.FK_MenuCommande_Menu" FromRole="Menu" ToRole="MenuCommande" />
         </EntityType>
         <EntityType Name="MenuRestaurant">
           <Key>
@@ -283,6 +335,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MenuCommande">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMenu" Type="Int32" />
+          <Property Name="IdCommande" Type="Int32" />
+          <NavigationProperty Name="Commandes" Relationship="LivraisonRepasModel.FK_MenuCommande_Commandes" FromRole="MenuCommande" ToRole="Commandes" />
+          <NavigationProperty Name="Menu" Relationship="LivraisonRepasModel.FK_MenuCommande_Menu" FromRole="MenuCommande" ToRole="Menu" />
+        </EntityType>
+        <Association Name="FK_MenuCommande_Commandes">
+          <End Type="LivraisonRepasModel.Commandes" Role="Commandes" Multiplicity="0..1" />
+          <End Type="LivraisonRepasModel.MenuCommande" Role="MenuCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commandes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuCommande">
+              <PropertyRef Name="IdCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuCommande_Menu">
+          <End Type="LivraisonRepasModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="LivraisonRepasModel.MenuCommande" Role="MenuCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MenuCommande">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -336,6 +422,15 @@
               <MappingFragment StoreEntitySet="Restaurant">
                 <ScalarProperty Name="nom" ColumnName="nom" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCommande">
+            <EntityTypeMapping TypeName="LivraisonRepasModel.MenuCommande">
+              <MappingFragment StoreEntitySet="MenuCommande">
+                <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
