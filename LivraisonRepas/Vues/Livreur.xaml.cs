@@ -132,8 +132,17 @@ namespace LivraisonRepas.Vues
                         }
                     }
                 }
+
+                MessageDialog msgDialog = new MessageDialog("Le paiment a été effectué", "Paiemen effectué");
+                await msgDialog.ShowAsync();
                 Init();
             }
+        }
+        
+        private void Deco_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+            ((App)(Application.Current)).UserConnected = null;
         }
     }
 }

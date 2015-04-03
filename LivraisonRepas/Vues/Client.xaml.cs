@@ -16,6 +16,7 @@ namespace LivraisonRepas.Vues
         private List<Restaurants> ListRestaurants;
         private List<Menus> ListMenus;
         private List<Menus> ListMenusCommande;
+        private List<Commandes> ListCommande;
         private List<Utilisateurs> users;
         private List<int> ListLivreurs;
         private Menus _menuSelected;
@@ -33,21 +34,21 @@ namespace LivraisonRepas.Vues
 
         private async void InitalizeCombobox()
         {
-            prix = 0.0M;
             rnd = new Random();
             ListRestaurants = new List<Restaurants>();
             ListMenusCommande = new List<Menus>();
             ListMenus = new List<Menus>();
-            users = new List<Utilisateurs>() ;
-            ListLivreurs = new List<int>() ;
+            users = new List<Utilisateurs>();
+            ListCommande = new List<Commandes>();
+            ListLivreurs = new List<int>();
+            users = await _service.Utilisateurs.GetUtilisateurs();
             foreach(Utilisateurs user in users){
-                if(user.Type = "Livreur"){
+                if(user.Type.Equals("Livreur")){
                     ListLivreurs.Add(user.IdUtilisateurs);
                 }
             }
             ListRestaurants = await _service.Restaurants.GetRestaurants();
             ListMenus = await _service.Menus.GetMenus();
-            users = await _service.Utilisateurs.GetUtilisateurs();
 
             foreach (Restaurants restos in ListRestaurants)
             {
@@ -58,36 +59,55 @@ namespace LivraisonRepas.Vues
         private async void AjouterPanierClick(object sender, RoutedEventArgs e)
         {
             Menus _menuSelected = (Menus)MenuBox.SelectedItem;
-            Menus _stock = await _service.Menus.GetMenus(_menuSelected.IdMenus);
-            if (_menuSelected != null && _stock.Stock > 0)
+            prix = 0.0M;
+           
+            if (_menuSelected != null)
             {
-                ListViewPanier.Items.Add(_menuSelected);
+                Menus _stock = await _service.Menus.GetMenus(_menuSelected.IdMenus);
+                if(_stock.Stock > 0)
+                {
+                    ListViewPanier.Items.Add(_menuSelected);
+                }
             }
             for (int i = 0; i < ListViewPanier.Items.Count; i++)
             {
-                Menus _itemMenu = (Menus)RestaurantBox.Items[i];
+                Menus _itemMenu = (Menus)MenuBox.Items[i];
                 ListMenusCommande.Add(_itemMenu);
                 prix = (decimal)prix + (decimal)_itemMenu.Prix;
             }
             PrixTotal.Text = prix.ToString();
         }
 
-        private void ValiderClick(object sender, RoutedEventArgs e)
+        private async void ValiderClick(object sender, RoutedEventArgs e)
         {
-            commande.Etat = "Non livré";
-            commande.IdClients = _userConnected.IdUtilisateurs;
-            int r = rnd.Next(ListLivreurs.Count);
-            commande.IdLivreurs = ListLivreurs[r];
-            commande.Prix = (double) prix;
-            _service.Commandes.AddCommandes(commande);
-            foreach (Menus menu in ListMenusCommande)
+            if(!NomPaiement.Text.Equals("") && NomPaiement.Text != "" 
+                && !PrenomPaiement.Text.Equals("") && PrenomPaiement.Text != "" 
+                && !NumeroPaiement.Text.Equals("") && NumeroPaiement.Text != "" && NumeroPaiement.Text.Length == 16
+                && !CodePaiement.Text.Equals("") && CodePaiement.Text != "" && CodePaiement.Text.Length == 3
+                && !DatePaiement.Text.Equals("") && DatePaiement.Text != "" && CodePaiement.Text.Length == 5)
             {
-                MenuCommande menuCommande = new MenuCommande();
-                menuCommande.IdCommande = commande.IdCommandes;
-                menuCommande.IdMenu = menu.IdMenus;
-                _service.MenusCommande.AddMenuCommande(menuCommande);
-            }
+                int r = rnd.Next(ListLivreurs.Count);
+                commande = new Commandes((double)prix, "Non livré", _userConnected.IdUtilisateurs, ListLivreurs[r]);
+                _service.Commandes.AddCommandes(commande);
+                ListCommande = await _service.Commandes.GetCommandes();
+                commande = ListCommande[ListCommande.Count - 1];
+                foreach (Menus menu in ListMenusCommande)
+                {
+                    MenuCommande menuCommande = new MenuCommande(commande.IdCommandes, menu.IdMenus);
+                    _service.MenusCommande.AddMenuCommande(menuCommande);
+                }
+                ListViewPanier.Items.Clear();
+                PrixTotal.Text = "";
 
+                MessageDialog msgDialog = new MessageDialog("Votre commande a été créé", "Commande créé");
+                await msgDialog.ShowAsync();
+            }
+            else
+            {
+                MessageDialog msgDialog = new MessageDialog("Informtion de paiement érroné", "Erreur");
+                await msgDialog.ShowAsync();
+
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -111,6 +131,12 @@ namespace LivraisonRepas.Vues
                     }
                 }
             }
+        }
+
+        private void Deco_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+            ((App)(Application.Current)).UserConnected = null;
         }
     }
 }

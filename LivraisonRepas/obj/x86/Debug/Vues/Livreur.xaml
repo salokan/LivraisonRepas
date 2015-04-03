@@ -41,6 +41,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="17,207,0,0" TextWrapping="Wrap" Text="Montant à régler : " VerticalAlignment="Top"/>
         <TextBlock x:Name ="CommandePrix" HorizontalAlignment="Left" Margin="109,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="AddresseLivraison" HorizontalAlignment="Left" Margin="124,190,0,37" TextWrapping="Wrap"/>
+        <Button x:ConnectionId='3' Content="Deconnexion" HorizontalAlignment="Left" Margin="7,7,0,0" VerticalAlignment="Top"                   />
     </Grid>
 </Page>
 
