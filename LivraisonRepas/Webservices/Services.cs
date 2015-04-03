@@ -1,15 +1,9 @@
-﻿using LivraisonRepas.LivraisonRepasCommandesServiceReference;
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
-
-namespace LivraisonRepas.Webservices
+﻿namespace LivraisonRepas.Webservices
 {
     public class Services
     {
-        private LivraisonRepasUtilisateursServiceClient _clientUtilisateurs;
-        private LivraisonRepasCommandesServiceClient _clientCommandes;
-
-        public CommandesCad _commandes{ get; set; }
-        public UtilisateursCad _utilisateurs { get; set; }
+        public CommandesCad Commandes{ get; set; }
+        public UtilisateursCad Utilisateurs { get; set; }
 
         public Services()
         {
@@ -18,12 +12,8 @@ namespace LivraisonRepas.Webservices
 
         public void InitWebservices()
         {
-            _clientUtilisateurs = new LivraisonRepasUtilisateursServiceClient();
-            _clientCommandes = new LivraisonRepasCommandesServiceClient();
-
-            _utilisateurs = new UtilisateursCad(_clientUtilisateurs);
-
-            _commandes = new CommandesCad(_clientCommandes);
+            Utilisateurs = new UtilisateursCad();
+            Commandes = new CommandesCad();
         }
     }
 }

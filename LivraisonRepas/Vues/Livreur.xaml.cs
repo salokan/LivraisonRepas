@@ -1,8 +1,7 @@
 ﻿using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
-
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
+using LivraisonRepas.Models;
 
 namespace LivraisonRepas.Vues
 {

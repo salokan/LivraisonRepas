@@ -1,8 +1,7 @@
 ﻿using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
-
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
+using LivraisonRepas.Models;
 using LivraisonRepas.Webservices;
 
 namespace LivraisonRepas.Vues
@@ -33,7 +32,7 @@ namespace LivraisonRepas.Vues
                 }
                 else
                 {
-                    if (await _service._utilisateurs.ExistePseudo(Pseudo.Text))
+                    if (await _service.Utilisateurs.ExistePseudo(Pseudo.Text))
                     {
                         MessageDialog msgDialog = new MessageDialog("Le pseudo existe déjà!", "Attention");
                         await msgDialog.ShowAsync();
@@ -42,13 +41,8 @@ namespace LivraisonRepas.Vues
                     {
                         try
                         {
-                            Utilisateurs utilisateur = new Utilisateurs{
-                                Adresse = Adresse.Text,
-                                Pseudo = Pseudo.Text,
-                                Password = Password.Password,
-                                Type = "client"
-                            };
-                            _service._utilisateurs.AddUtilisateurs(utilisateur);
+                            Utilisateurs utilisateur = new Utilisateurs(Adresse.Text,Pseudo.Text,Password.Password,"client");
+                            _service.Utilisateurs.AddUtilisateurs(utilisateur);
                             ((App)(Application.Current)).UserConnected = utilisateur;
 
                             Frame.Navigate(typeof(Client));

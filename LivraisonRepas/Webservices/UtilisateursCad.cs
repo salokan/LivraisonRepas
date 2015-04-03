@@ -1,38 +1,31 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.IO;
+using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
-using Utilisateurs = LivraisonRepas.LivraisonRepasUtilisateursServiceReference.Utilisateurs;
-using UtilisateursComposite = LivraisonRepas.LivraisonRepasUtilisateursServiceReference.UtilisateursComposite;
+using Windows.Data.Json;
+using LivraisonRepas.Models;
+
 
 namespace LivraisonRepas.Webservices
 {
     public class UtilisateursCad
     {
-        LivraisonRepasUtilisateursServiceClient _client;
-
-        public UtilisateursCad(LivraisonRepasUtilisateursServiceClient client)
-        {
-            _client = client;
-        }
+        private AppelsRest _service = new AppelsRest();
 
         public async Task<List<Utilisateurs>> GetUtilisateurs()
         {
-            ObservableCollection<UtilisateursComposite> utilisateursList;
+            string response = await _service.GetMethodWithoutParameter("Utilisateurs");
+
+            JsonObject jsonObject = JsonObject.Parse(response);
+
             List<Utilisateurs> utilisateurs = new List<Utilisateurs>();
 
-            utilisateursList = await _client.GetUtilisateursAsync();
-
-            foreach (UtilisateursComposite u in utilisateursList)
+            foreach (IJsonValue jsonValue in jsonObject.GetNamedArray("UtilisateursListe"))
             {
-                Utilisateurs utilisateur = new Utilisateurs();
-                utilisateur.Id = u.IdUtilisateursValue;
-                utilisateur.Pseudo = u.PseudoValue;
-                utilisateur.Password = u.PasswordValue;
-                utilisateur.Adresse = u.AdresseValue;
-                utilisateur.Type = u.TypeValue;
-
-                utilisateurs.Add(utilisateur);
+                if (jsonValue.ValueType == JsonValueType.Object)
+                {
+                    utilisateurs.Add(new Utilisateurs(jsonValue.GetObject()));
+                }
             }
 
             return utilisateurs;
@@ -40,52 +33,70 @@ namespace LivraisonRepas.Webservices
 
         public async Task<Utilisateurs> GetUtilisateur(int id)
         {
-            Utilisateurs utilisateurs = new Utilisateurs();
+            string response = await _service.GetMethod("Utilisateur", id.ToString());
 
-            UtilisateursComposite utilisateursComposite = await _client.GetUtilisateurAsync(id);
+            JsonObject jsonObject = JsonObject.Parse(response);
 
-            utilisateurs.Id = utilisateursComposite.IdUtilisateursValue;
-            utilisateurs.Pseudo = utilisateursComposite.PseudoValue;
-            utilisateurs.Password = utilisateursComposite.PasswordValue;
-            utilisateurs.Adresse = utilisateursComposite.AdresseValue;
-            utilisateurs.Type = utilisateursComposite.TypeValue;
+            Utilisateurs utilisateur = new Utilisateurs(jsonObject);
 
-            return utilisateurs;
+            return utilisateur;
         }
 
-        public async void AddUtilisateurs(Utilisateurs u)
+        public void AddUtilisateurs(Utilisateurs u)
         {
-            await _client.AddUtilisateursAsync(u);
+            string json;
+
+            u.IdUtilisateurs = 0;
+
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Utilisateurs));
+            MemoryStream ms = new MemoryStream();
+            js.WriteObject(ms, u);
+
+            ms.Position = 0;
+            StreamReader sr = new StreamReader(ms);
+            json = sr.ReadToEnd();
+
+            _service.PostMethod("Utilisateur", json);
         }
 
-        public async void DeleteUtilisateurs(int id)
+        public void DeleteUtilisateurs(int id)
         {
-            await _client.DeleteUtilisateursAsync(id);
+            _service.DeleteMethod("Utilisateur", id.ToString());
         }
 
-        public async void UpdateUtilisateurs(Utilisateurs u)
+        public void UpdateUtilisateurs(Utilisateurs u)
         {
-            await _client.UpdateUtilisateursAsync(u);
+            string json;
+
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Utilisateurs));
+            MemoryStream ms = new MemoryStream();
+            js.WriteObject(ms, u);
+
+            ms.Position = 0;
+            StreamReader sr = new StreamReader(ms);
+            json = sr.ReadToEnd();
+
+            _service.PutMethod("Utilisateur", json,"none");
         }
 
         public async Task<Utilisateurs> AuthentificationUtilisateur(string pseudo, string password)
         {
-            Utilisateurs utilisateurs = new Utilisateurs();
+            string response = await _service.GetMethod("Utilisateur/Authentification", pseudo + "/" + password);
 
-            UtilisateursComposite utilisateursComposite = await _client.AuthentificationUtilisateurAsync(pseudo,password);
+            JsonObject jsonObject = JsonObject.Parse(response);
 
-            utilisateurs.Id = utilisateursComposite.IdUtilisateursValue;
-            utilisateurs.Pseudo = utilisateursComposite.PseudoValue;
-            utilisateurs.Password = utilisateursComposite.PasswordValue;
-            utilisateurs.Adresse = utilisateursComposite.AdresseValue;
-            utilisateurs.Type = utilisateursComposite.TypeValue;
+            Utilisateurs utilisateur = new Utilisateurs(jsonObject);
 
-            return utilisateurs;
+            return utilisateur;
         }
 
         public async Task<bool> ExistePseudo(string pseudo)
         {
-            return await _client.ExistePseudoAsync(pseudo);
+            string response = await _service.GetMethod("Utilisateur/ExistePseudo", pseudo);
+
+            if (response.Equals("\"true\""))
+                return true;
+            return false;
         }
     }
 }

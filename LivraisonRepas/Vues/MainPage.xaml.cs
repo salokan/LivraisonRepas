@@ -1,8 +1,9 @@
 ﻿using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
-using LivraisonRepas.LivraisonRepasUtilisateursServiceReference;
+using LivraisonRepas.Models;
 using LivraisonRepas.Webservices;
+
 
 namespace LivraisonRepas.Vues
 {
@@ -17,9 +18,9 @@ namespace LivraisonRepas.Vues
 
         private async void ConnexionClick(object sender, RoutedEventArgs e)
         {
-            Utilisateurs utilisateur = await _service._utilisateurs.AuthentificationUtilisateur(Pseudo.Text, Password.Password);
+            Utilisateurs utilisateur = await _service.Utilisateurs.AuthentificationUtilisateur(Pseudo.Text, Password.Password);
 
-            if (utilisateur.Id == 0)
+            if (utilisateur.IdUtilisateurs == 0)
             {
                 MessageDialog msgDialog = new MessageDialog("Le pseudo ou le mot de passe est incorrect", "Attention");
                 await msgDialog.ShowAsync();

@@ -16,7 +16,7 @@
             <ComboBoxItem Content="Menu 5" Height="100" Width="100"/>
         </ComboBox>
         <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="444,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <Button Content="Commander" HorizontalAlignment="Left" Margin="863,723,0,0" VerticalAlignment="Top" Click="Valider_Click"/>
+        <Button Content="Commander" HorizontalAlignment="Left" Margin="863,723,0,0" VerticalAlignment="Top" Click="ValiderClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="444,319,0,0" TextWrapping="Wrap" Text="Choix du menu :" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="444,467,0,0" TextWrapping="Wrap" Text="Adresse de livraison (si différente du compte) :" VerticalAlignment="Top"/>
         <ListView x:Name="ListViewPanier" HorizontalAlignment="Left" Height="730" Margin="982,28,0,0" VerticalAlignment="Top" Width="374" Grid.RowSpan="2" BorderThickness="1" BorderBrush="White" CanReorderItems="True">
@@ -32,7 +32,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="650,371,0,0" VerticalAlignment="Top" Click="Ajouter_Panier_Click"/>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="650,371,0,0" VerticalAlignment="Top" Click="AjouterPanierClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="982,10,0,0" TextWrapping="Wrap" Text="Panier : " VerticalAlignment="Top"/>
         <TextBlock x:Name="username" HorizontalAlignment="Left" Margin="1307,10,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" RenderTransformOrigin="-0.378,-0.462"/>
     </Grid>
