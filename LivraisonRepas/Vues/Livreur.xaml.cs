@@ -119,6 +119,19 @@ namespace LivraisonRepas.Vues
             if(CommandesValidate != null) {
                 CommandesValidate.Etat = "Livré";
                 _service.Commandes.UpdateCommandes(CommandesValidate);
+                List<MenuCommande> menuCommande = await _service.MenusCommande.GetMenuCommandeByCommande(CommandesValidate.IdCommandes);
+                List<Menus> menus = await _service.Menus.GetMenus();
+                foreach (MenuCommande _menuCommande in menuCommande)
+                {
+                    foreach (Menus menu in menus)
+                    {
+                        if (menu.IdMenus == _menuCommande.IdMenu)
+                        {
+                            menu.Stock = menu.Stock - 1;
+                            _service.Menus.UpdateMenus(menu);
+                        }
+                    }
+                }
                 Init();
             }
         }
