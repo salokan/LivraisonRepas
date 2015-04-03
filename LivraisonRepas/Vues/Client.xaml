@@ -8,13 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ComboBox x:Name="Menu" HorizontalAlignment="Left" Margin="444,337,0,0" VerticalAlignment="Top" Width="287" PlaceholderText="Choix du menu">
-            <ComboBoxItem Content="Menu 1" Height="100" Width="100"/>
-            <ComboBoxItem Content="Menu 2" Height="100" Width="100"/>
-            <ComboBoxItem Content="Menu 3" Height="100" Width="100"/>
-            <ComboBoxItem Content="Menu 4" Height="100" Width="100"/>
-            <ComboBoxItem Content="Menu 5" Height="100" Width="100"/>
-        </ComboBox>
+        
         <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="444,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
         <Button Content="Commander" HorizontalAlignment="Left" Margin="863,723,0,0" VerticalAlignment="Top" Click="ValiderClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="444,319,0,0" TextWrapping="Wrap" Text="Choix du menu :" VerticalAlignment="Top"/>
@@ -35,5 +29,8 @@
         <Button Content="Ajouter" HorizontalAlignment="Left" Margin="650,371,0,0" VerticalAlignment="Top" Click="AjouterPanierClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="982,10,0,0" TextWrapping="Wrap" Text="Panier : " VerticalAlignment="Top"/>
         <TextBlock x:Name="username" HorizontalAlignment="Left" Margin="1307,10,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" RenderTransformOrigin="-0.378,-0.462"/>
+        <TextBlock HorizontalAlignment="Left" Margin="444,264,0,0" TextWrapping="Wrap" Text="Choix du restaurant" VerticalAlignment="Top"/>
+        <ComboBox x:Name="RestaurantBox" ItemsSource="{Binding Path=ListRestaurants}" DisplayMemberPath="NomRestaurants" SelectedValuePath="IdRestaurant" SelectedValue="{Binding Path=IdRestaurant}" HorizontalAlignment="Left" Margin="444,282,0,0" VerticalAlignment="Top" Width="287" PlaceholderText="Choix du restaurant" SelectionChanged="RestaurantBox_SelectionChanged"/>
+        <TextBlock x:Name="MenuResto" HorizontalAlignment="Left" Margin="444,337,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Page>
