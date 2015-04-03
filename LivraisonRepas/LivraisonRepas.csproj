@@ -109,6 +109,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\BingMapsRESTServices.cs" />
     <Compile Include="Models\Commandes.cs" />
     <Compile Include="Models\MenuCommande.cs" />
     <Compile Include="Models\MenuRestaurant.cs" />

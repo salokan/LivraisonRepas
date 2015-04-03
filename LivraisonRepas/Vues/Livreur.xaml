@@ -16,32 +16,18 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <ListView HorizontalAlignment="Left" Height="640" Margin="10,118,0,0" VerticalAlignment="Top" Width="374" Grid.RowSpan="2" BorderBrush="White" BorderThickness="1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" TextWrapping="Wrap" Text="{Binding Rue}" Margin="5,0,0,0" FontWeight="Bold"/>
-                        <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{Binding Distance}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Maps:Map Grid.ColumnSpan="2" Margin="389,118,10,279" Grid.RowSpan="2" ZoomLevel="7"/>
-        <TextBlock HorizontalAlignment="Left" Margin="198,355,0,0" TextWrapping="Wrap" Text="Adresse de livraison : " VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="305,355,0,0" TextWrapping="Wrap" Text="Ici Adresse" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-        <ComboBox HorizontalAlignment="Left" Margin="305,373,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="1">
-            <ComboBoxItem Content="En Préparation" Height="100" Width="100"/>
-            <ComboBoxItem Content="En Livraison" Height="100" Width="100"/>
-            <ComboBoxItem Content="Livré" Height="100" Width="100"/>
-        </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="206,382,0,0" TextWrapping="Wrap" Text="Êtat de la livraison :" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="Parcours : " VerticalAlignment="Top" RenderTransformOrigin="0.532,0.615"/>
+
+        <Maps:Map Margin="173,129,10,268" Grid.RowSpan="2" ZoomLevel="7" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,190,0,0" TextWrapping="Wrap" Text="Adresse de livraison : " VerticalAlignment="Top"/>
+        <TextBlock x:Name="AdresseLivraison" HorizontalAlignment="Left" Margin="124,190,0,0" TextWrapping="Wrap" Text="Ici Adresse" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,203,0,0" TextWrapping="Wrap" Text="Êtat de la livraison :" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="550,32,0,0" TextWrapping="Wrap" Text="Etat de la livraison" VerticalAlignment="Top" FontSize="40" RenderTransformOrigin="-0.364,0.604" Grid.ColumnSpan="2"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="710,58,0,0" TextWrapping="Wrap" Text="User" VerticalAlignment="Top"/>
+        <TextBlock x:Name="EtatLivraison" HorizontalAlignment="Left" Margin="116,203,0,0" TextWrapping="Wrap" Text="Ici Etat" VerticalAlignment="Top"/>
+        <Button Content="Valider la livraison" Grid.Column="1" HorizontalAlignment="Left" Margin="615,483,0,0" Grid.Row="1" VerticalAlignment="Top" Width="161" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,129,0,0" TextWrapping="Wrap" Text="Liste des livraisons à effectuer : " VerticalAlignment="Top"/>
+        <ComboBox x:Name="CommandeBox" ItemsSource="{Binding Path=ListCommandesLivreur}" DisplayMemberPath="IdCommandes" SelectedValuePath="IdCommandes" SelectedValue="{Binding Path=IdCommandes}" HorizontalAlignment="Left" Margin="17,147,0,0" VerticalAlignment="Top" Width="211" RenderTransformOrigin="0.493,1.219" PlaceholderText="Liste des livraisons" SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,216,0,0" TextWrapping="Wrap" Text="Montant à régler : " VerticalAlignment="Top"/>
+        <TextBlock x:Name ="CommandePrix" HorizontalAlignment="Left" Margin="109,217,0,0" TextWrapping="Wrap" Text="Ici Prix" VerticalAlignment="Top"/>
     </Grid>
 </Page>
