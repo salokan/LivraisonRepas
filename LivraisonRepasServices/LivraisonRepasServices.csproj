@@ -76,11 +76,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="LivraisonRepasModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LivraisonRepasModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="LivraisonRepasService.cs" />
     <Compile Include="Menu.cs">
       <DependentUpon>LivraisonRepasModel.tt</DependentUpon>

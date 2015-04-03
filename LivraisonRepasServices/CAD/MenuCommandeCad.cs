@@ -24,7 +24,7 @@ namespace LivraisonRepasServices.CAD
                 foreach (MenuCommande mc in menuCommande)
                 {
                     MenuCommandeComposite composite = new MenuCommandeComposite();
-                    composite.IdCommande = mc.Id;
+                    composite.IdMenuCommande = mc.Id;
                     if (mc.IdCommande != null) composite.IdCommande = (int)mc.IdCommande;
                     if (mc.IdMenu != null) composite.IdMenu = (int)mc.IdMenu;
                     menuCommandeList.Add(composite);
