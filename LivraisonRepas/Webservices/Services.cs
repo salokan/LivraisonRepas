@@ -7,7 +7,6 @@
         public RestaurantsCad Restaurants { get; set; }
         public MenusCad Menus { get; set; }
         public MenuRestaurantCad MenusRestaurant { get; set; }
-
         public MenuCommandeCad MenusCommande { get; set; }
 
         public Services()

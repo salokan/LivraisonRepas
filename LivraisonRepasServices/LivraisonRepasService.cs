@@ -27,11 +27,11 @@ namespace LivraisonRepasServices
             return commandesList;
         }
 
-        public CommandesListComposite GetCommandesByLivreur(int idLivreur)
+        public CommandesListComposite GetCommandesByLivreur(string idLivreur)
         {
             CommandesListComposite commandesList = new CommandesListComposite();
 
-            commandesList.CommandesListe = _commandes.GetCommandesByLivreur(idLivreur);
+            commandesList.CommandesListe = _commandes.GetCommandesByLivreur(int.Parse(idLivreur));
 
             return commandesList;
         }
@@ -180,11 +180,11 @@ namespace LivraisonRepasServices
             return menuRestaurantList;
         }
 
-        public MenuRestaurantListComposite GetMenusRestaurantByRestaurant(int idRestaurant)
+        public MenuRestaurantListComposite GetMenusRestaurantByRestaurant(string idRestaurant)
         {
             MenuRestaurantListComposite menuRestaurantList = new MenuRestaurantListComposite();
 
-            menuRestaurantList.MenuRestaurantListe = _menuRestaurant.GetMenuRestaurantByRestaurant(idRestaurant);
+            menuRestaurantList.MenuRestaurantListe = _menuRestaurant.GetMenuRestaurantByRestaurant(int.Parse(idRestaurant));
 
             return menuRestaurantList;
         }
@@ -222,11 +222,11 @@ namespace LivraisonRepasServices
             return menuCommandeList;
         }
 
-        public MenuCommandeListComposite GetMenusCommandeByCommande(int idCommande)
+        public MenuCommandeListComposite GetMenusCommandeByCommande(string idCommande)
         {
             MenuCommandeListComposite menuCommandeList = new MenuCommandeListComposite();
 
-            menuCommandeList.MenuCommandeListe = _menuCommande.GetMenuCommandeByCommande(idCommande);
+            menuCommandeList.MenuCommandeListe = _menuCommande.GetMenuCommandeByCommande(int.Parse(idCommande));
 
             return menuCommandeList;
         }

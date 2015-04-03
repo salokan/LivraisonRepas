@@ -63,7 +63,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CommandesCadTests.cs" />
-    <Compile Include="MenuRestaurantTests.cs" />
+    <Compile Include="MenuCommandeCadTests.cs" />
+    <Compile Include="MenuRestaurantCadTests.cs" />
     <Compile Include="MenusCadTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurantsCadTests.cs" />

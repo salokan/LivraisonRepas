@@ -15,7 +15,7 @@ namespace LivraisonRepasServices
 
         [OperationContract]
         [WebGet(UriTemplate = "CommandesByLivreur/{idLivreur}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        CommandesListComposite GetCommandesByLivreur(int idLivreur);
+        CommandesListComposite GetCommandesByLivreur(string idLivreur);
 
         [OperationContract]
         [WebGet(UriTemplate = "Commande/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
@@ -123,7 +123,7 @@ namespace LivraisonRepasServices
 
         [OperationContract]
         [WebGet(UriTemplate = "MenuRestaurantByRestaurant/{idRestaurant}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        MenuRestaurantListComposite GetMenusRestaurantByRestaurant(int idRestaurant);
+        MenuRestaurantListComposite GetMenusRestaurantByRestaurant(string idRestaurant);
 
         [OperationContract]
         [WebGet(UriTemplate = "MenuRestaurant/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
@@ -151,7 +151,7 @@ namespace LivraisonRepasServices
 
         [OperationContract]
         [WebGet(UriTemplate = "MenuCommandeByCommande/{idCommande}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        MenuCommandeListComposite GetMenusCommandeByCommande(int idCommande);
+        MenuCommandeListComposite GetMenusCommandeByCommande(string idCommande);
 
         [OperationContract]
         [WebGet(UriTemplate = "MenuCommande/{id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
