@@ -15,30 +15,37 @@ namespace LivraisonRepas.Vues
         private Services _service;
         private List<Restaurants> ListRestaurants;
         private List<Menus> ListMenus;
-        private MenuRestaurant _menuResto;
         private Menus _menuSelected;
-        private string RestaurantEnCours;
-        private string MenusEnCours;
 
         public Client()
         {
-            _service = new Services();
-            InitalizeCombobox();
             InitializeComponent();
+            _service = new Services();
+            _userConnected = ((App)(Application.Current)).UserConnected;
+            InitalizeCombobox();
         }
 
         private async void InitalizeCombobox()
         {
-            _userConnected = ((App)(Application.Current)).UserConnected;
-            MessageDialog msgDialog = new MessageDialog("Bienvenue " + _userConnected.Pseudo, "Attention");
-            await msgDialog.ShowAsync();
             ListRestaurants = new List<Restaurants>();
+            ListMenus = new List<Menus>();
             ListRestaurants = await _service.Restaurants.GetRestaurants();
+            ListMenus = await _service.Menus.GetMenus();
+            foreach (Restaurants restos in ListRestaurants)
+            {
+                RestaurantBox.Items.Add(restos);
+            }
         }
 
         private async void AjouterPanierClick(object sender, RoutedEventArgs e)
         {
-            if (ListViewPanier.Items != null) ListViewPanier.Items.Add(_menuSelected);
+            string prixTotal;
+            Menus _menuSelected = (Menus)MenuBox.SelectedItem;
+            if (_menuSelected != null)
+            {
+                ListViewPanier.Items.Add(_menuSelected);
+                PrixTotal.Text = _menuSelected.Prix.ToString();
+            }
         }
 
         private async void ValiderClick(object sender, RoutedEventArgs e)
@@ -53,18 +60,17 @@ namespace LivraisonRepas.Vues
 
         private async void RestaurantBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListMenus = new List<Menus>();
-            RestaurantEnCours = RestaurantBox.SelectedValue.ToString();
-            _menuResto = await _service.MenusRestaurant.GetMenuRestaurant(int.Parse(RestaurantEnCours));
-            ListMenus = await _service.Menus.GetMenus();
+            MenuBox.Items.Clear();
+            Restaurants restoItem = (Restaurants)RestaurantBox.SelectedItem;
+            MenuRestaurant menuResto = await _service.MenusRestaurant.GetMenuRestaurant(restoItem.IdRestaurants);
+            
             foreach (Menus menu in ListMenus)
             {
-                if (menu.IdMenus == _menuResto.IdMenu)
+                if (menu.IdRestaurant == restoItem.IdRestaurants)
                 {
-                    _menuSelected = menu;
+                    MenuBox.Items.Add(menu);
                 }
             }
-            MenuResto.Text = _menuSelected.NomMenus;
         }
     }
 }

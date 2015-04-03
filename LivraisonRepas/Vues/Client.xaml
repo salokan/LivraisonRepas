@@ -8,20 +8,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
-        <TextBox x:Name="Adresse" HorizontalAlignment="Left" Margin="444,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <Button Content="Commander" HorizontalAlignment="Left" Margin="863,723,0,0" VerticalAlignment="Top" Click="ValiderClick"/>
+        <Button Content="Commander" HorizontalAlignment="Left" Margin="1242,723,0,0" VerticalAlignment="Top" Click="ValiderClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="444,319,0,0" TextWrapping="Wrap" Text="Choix du menu :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="444,467,0,0" TextWrapping="Wrap" Text="Adresse de livraison (si différente du compte) :" VerticalAlignment="Top"/>
-        <ListView x:Name="ListViewPanier" HorizontalAlignment="Left" Height="730" Margin="982,28,0,0" VerticalAlignment="Top" Width="374" Grid.RowSpan="2" BorderThickness="1" BorderBrush="White" CanReorderItems="True">
+        <ListView x:Name="ListViewPanier" HorizontalAlignment="Left" Height="637" Margin="982,28,0,0" VerticalAlignment="Top" Width="374" BorderThickness="1" BorderBrush="White" CanReorderItems="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300" />
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" TextWrapping="Wrap" x:Name="Menu" Margin="5,0,0,0" FontWeight="Bold"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -30,7 +25,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="982,10,0,0" TextWrapping="Wrap" Text="Panier : " VerticalAlignment="Top"/>
         <TextBlock x:Name="username" HorizontalAlignment="Left" Margin="1307,10,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" RenderTransformOrigin="-0.378,-0.462"/>
         <TextBlock HorizontalAlignment="Left" Margin="444,264,0,0" TextWrapping="Wrap" Text="Choix du restaurant" VerticalAlignment="Top"/>
-        <ComboBox x:Name="RestaurantBox" ItemsSource="{Binding Path=ListRestaurants}" DisplayMemberPath="NomRestaurants" SelectedValuePath="IdRestaurant" SelectedValue="{Binding Path=IdRestaurant}" HorizontalAlignment="Left" Margin="444,282,0,0" VerticalAlignment="Top" Width="287" PlaceholderText="Choix du restaurant" SelectionChanged="RestaurantBox_SelectionChanged"/>
-        <TextBlock x:Name="MenuResto" HorizontalAlignment="Left" Margin="444,337,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <ComboBox x:Name="RestaurantBox" DisplayMemberPath="NomRestaurants" HorizontalAlignment="Left" Margin="444,282,0,0" VerticalAlignment="Top" Width="287" PlaceholderText="Choix du restaurant" SelectionChanged="RestaurantBox_SelectionChanged"/>
+        <ComboBox x:Name="MenuBox" DisplayMemberPath="NomMenus" HorizontalAlignment="Left" Margin="444,337,0,0" VerticalAlignment="Top" Width="287" PlaceholderText="Choix du menu" />
+        <TextBlock HorizontalAlignment="Left" Margin="982,670,0,0" TextWrapping="Wrap" Text="Prix total : " VerticalAlignment="Top"/>
+        <TextBlock x:Name="PrixTotal" HorizontalAlignment="Left" Margin="1035,670,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </Page>

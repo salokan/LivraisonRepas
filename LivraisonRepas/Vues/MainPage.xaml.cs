@@ -28,11 +28,11 @@ namespace LivraisonRepas.Vues
             else
             {
                 ((App)(Application.Current)).UserConnected = utilisateur;
-                if (utilisateur.Type.Equals("livreur"))
+                if (utilisateur.Type.Equals("Livreur"))
                 {
                     Frame.Navigate(typeof(Livreur), utilisateur);
                 }
-                else if (utilisateur.Type.Equals("client"))
+                else if (utilisateur.Type.Equals("Client"))
                 {
                     Frame.Navigate(typeof(Client), utilisateur);
                 }

@@ -35,11 +35,12 @@
         <TextBlock x:Name="AdresseLivraison" HorizontalAlignment="Left" Margin="124,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="550,32,0,0" TextWrapping="Wrap" Text="Etat de la livraison" VerticalAlignment="Top" FontSize="40" RenderTransformOrigin="-0.364,0.604" Grid.ColumnSpan="2"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="710,58,0,0" TextWrapping="Wrap" Text="User" VerticalAlignment="Top"/>
-        <Button Content="Valider la livraison" Grid.Column="1" HorizontalAlignment="Left" Margin="608,483,0,0" Grid.Row="1" VerticalAlignment="Top" Width="161" Click="Valider_Click"/>
+        <Button x:ConnectionId='1' Content="Valider la livraison" Grid.Column="1" HorizontalAlignment="Left" Margin="608,483,0,0" Grid.Row="1" VerticalAlignment="Top" Width="161"                      />
         <TextBlock HorizontalAlignment="Left" Margin="17,129,0,0" TextWrapping="Wrap" Text="Liste des livraisons à effectuer : " VerticalAlignment="Top"/>
-        <ComboBox x:Name="CommandeBox" DisplayMemberPath="IdCommandes" HorizontalAlignment="Left" Margin="17,147,0,0" VerticalAlignment="Top" Width="211" RenderTransformOrigin="0.493,1.219" PlaceholderText="Liste des livraisons" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox x:ConnectionId='2' x:Name="CommandeBox" DisplayMemberPath="IdCommandes" HorizontalAlignment="Left" Margin="17,147,0,0" VerticalAlignment="Top" Width="211" RenderTransformOrigin="0.493,1.219" PlaceholderText="Liste des livraisons"                                             />
         <TextBlock HorizontalAlignment="Left" Margin="17,207,0,0" TextWrapping="Wrap" Text="Montant à régler : " VerticalAlignment="Top"/>
         <TextBlock x:Name ="CommandePrix" HorizontalAlignment="Left" Margin="109,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="AddresseLivraison" HorizontalAlignment="Left" Margin="124,190,0,37" TextWrapping="Wrap"/>
     </Grid>
 </Page>
+

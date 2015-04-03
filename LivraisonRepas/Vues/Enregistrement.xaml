@@ -16,7 +16,7 @@
         	<Run Text=":"/>
         </TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="534,219,0,0" TextWrapping="Wrap" Text="Password :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="534,274,0,0" TextWrapping="Wrap" Text="Adresse (et code postal) :" VerticalAlignment="Top"/>
-        <Button Content="Annuler&#xD;&#xA;" HorizontalAlignment="Left" Margin="761,326,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.062,0" Height="38" Click="BackClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="534,274,0,0" TextWrapping="Wrap" Text="Adresse (ex : 10 rue xxx 31000 Toulouse) :" VerticalAlignment="Top"/>
+        <Button Content="Annuler" HorizontalAlignment="Left" Margin="761,326,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.062,0" Height="38" Click="BackClick"/>
     </Grid>
 </Page>

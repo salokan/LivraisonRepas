@@ -12,11 +12,18 @@ namespace LivraisonRepas.Webservices
 
         public AppelsRest()
         {
+            InitUrl();
+        }
+
+        public void InitUrl ()
+        {
             _url = "http://localhost:1234/LivraisonRepas/";
         }
 
         public async Task<string> GetMethod(string table, string parametre)
         {
+            InitUrl();
+
             _url = _url + table + "/" + parametre;
 
             HttpBaseProtocolFilter rootFilter = new HttpBaseProtocolFilter();
@@ -58,6 +65,8 @@ namespace LivraisonRepas.Webservices
 
         public async Task<string> GetMethodWithoutParameter(string table)
         {
+            InitUrl();
+
             _url = _url + table;
 
             HttpBaseProtocolFilter rootFilter = new HttpBaseProtocolFilter();
@@ -99,6 +108,8 @@ namespace LivraisonRepas.Webservices
 
         public async void PostMethod(string table, string json)
         {
+            InitUrl();
+
             _url = _url + table + "/Create";
 
             HttpClient httpClient = new HttpClient();
@@ -110,6 +121,8 @@ namespace LivraisonRepas.Webservices
 
         public async void PutMethod(string table, string json, string parametre)
         {
+            InitUrl();
+
             _url = _url + table + "/Update/" + parametre;
 
             HttpClient httpClient = new HttpClient();
@@ -121,6 +134,8 @@ namespace LivraisonRepas.Webservices
 
         public async void DeleteMethod(string table, string parametre)
         {
+            InitUrl();
+
             _url = _url + table + "/Delete";
             HttpClient httpClient = new HttpClient();
             await httpClient.DeleteAsync(new Uri(String.Format("{0}/{1}", _url, parametre)));
