@@ -13,7 +13,7 @@ namespace LivraisonRepas.Models
         public MenuCommande(JsonObject jsonObject)
         {
             IdMenuCommande = (int)jsonObject.GetNamedNumber("IdMenuCommande");
-            IdCommande = (int)jsonObject.GetNamedNumber("IdRestaurant");
+            IdCommande = (int)jsonObject.GetNamedNumber("IdCommande");
             IdMenu = (int)jsonObject.GetNamedNumber("IdMenu");
         }
 
@@ -24,7 +24,7 @@ namespace LivraisonRepas.Models
             IdMenu = idMenu;
         }
 
-        [DataMember(Name = "IdMenuRestaurant", IsRequired = true)]
+        [DataMember(Name = "IdMenuCommande", IsRequired = true)]
         public int IdMenuCommande
         {
             get

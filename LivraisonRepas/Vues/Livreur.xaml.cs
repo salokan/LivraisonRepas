@@ -119,8 +119,30 @@ namespace LivraisonRepas.Vues
             if(CommandesValidate != null) {
                 CommandesValidate.Etat = "Livré";
                 _service.Commandes.UpdateCommandes(CommandesValidate);
+                List<MenuCommande> menuCommande = await _service.MenusCommande.GetMenuCommandeByCommande(CommandesValidate.IdCommandes);
+                List<Menus> menus = await _service.Menus.GetMenus();
+                foreach (MenuCommande _menuCommande in menuCommande)
+                {
+                    foreach (Menus menu in menus)
+                    {
+                        if (menu.IdMenus == _menuCommande.IdMenu)
+                        {
+                            menu.Stock = menu.Stock - 1;
+                            _service.Menus.UpdateMenus(menu);
+                        }
+                    }
+                }
+
+                MessageDialog msgDialog = new MessageDialog("Le paiment a été effectué", "Paiemen effectué");
+                await msgDialog.ShowAsync();
                 Init();
             }
+        }
+        
+        private void Deco_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+            ((App)(Application.Current)).UserConnected = null;
         }
     }
 }
